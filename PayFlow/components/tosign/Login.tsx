@@ -1,21 +1,29 @@
 /* eslint-disable */
 import {Image, Text, View, TextInput, TouchableOpacity} from "react-native";
+// @ts-ignore
 import Logo from '../../assets/logo/payflow.png';
 import axios from 'axios';
 import React, {useState} from "react";
+import {storeData} from "../../utils/storage.ts";
+import {TOKEN_KEY} from "../../config/authconfig.js";
+import { BASE_URL } from "../../config/shared";
+import { useForm } from 'react-hook-form';
+import Input from "../common/Input.tsx";
+
 
 
 const Login = () => {
-    const [login, setLogin]=useState('')
-    const [password, setPassword]=useState('')
 
-    const signIn = () => {
-        // TODO validate input
-        console.log(login)
-        console.log(password)
-        return
+  const { control, handleSubmit} = useForm();
+
+    const onSubmit = (data: any) => {
+      console.log(data)
+        // // TODO validate input
+        // console.log(login)
+        // console.log(password)
+        // // return
         // axios
-        //     .post('http://localhost:8080/api/v1/auth/authenticate',
+        //     .post(`${BASE_URL}/api/v1/auth/authenticate`,
         //         {
         //             login: login,
         //             password: password
@@ -23,7 +31,7 @@ const Login = () => {
         //     )
         //     .then((response) => {
         //         console.log(response.data)
-        //         // localStorage.setItem(TOKEN_KEY, response.data.token)
+        //         storeData(TOKEN_KEY, response.data.token).then(r => console.log('token stored'))
         //
         //     })
         //     .catch((error) => console.log(error))
@@ -36,19 +44,11 @@ const Login = () => {
             </View>
             <View className={"h-2/5  w-full items-center justify-center gap-y-6"}>
                 <Text className={"text-black font-medium text-3xl my-5"}>Sign in</Text>
-                <TextInput
-                    placeholder={"Login"}
-                    className={"w-3/4 h-10  bg-gray-300 rounded-2xl px-3"}
-                    onChangeText={setLogin}
-                />
-                <TextInput
-                    placeholder={"Password"}
-                    className={"w-3/4 h-10  bg-gray-300 rounded-2xl px-3"}
-                    onChangeText={setPassword}
-                />
+              <Input name="login" control={control}/>
+              <Input name="password" control={control}/>
                 <TouchableOpacity
                     className={'bg-tertiary rounded'}
-                    onPress={signIn}
+                    onPress={handleSubmit(onSubmit)}
                 >
                     <Text className={"px-10 py-2 font-medium text-white"}>Sign</Text>
                 </TouchableOpacity>
