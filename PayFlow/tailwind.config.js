@@ -12,6 +12,8 @@ module.exports = {
         secondary: '#D3E0EA',
         tertiary: '#1687A7',
         quaternary: '#276678',
+        black: '#303841',
+        white: '#F3F3F3',
       },
     },
   },
