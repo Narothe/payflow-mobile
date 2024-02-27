@@ -4,9 +4,10 @@ import { View, Text } from 'react-native';
 
 export default function(): React.JSX.Element {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text
-        style={{ fontSize: 26, fontWeight: 'bold' }}>Home Screen</Text>
+    <View className="flex-1 items-center justify-center ">
+      <Text className="text-2xl font-bold">
+        Home Screen
+      </Text>
     </View>
   );
 }
