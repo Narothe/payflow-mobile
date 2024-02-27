@@ -47,10 +47,12 @@ const Login = ({navigation}: any) => {
               <Input
                 name="login"
                 control={control}
+                // defaultValue={''}
               />
               <Input
                 name="password"
                 control={control}
+                // defaultValue={''}
               />
               <TouchableOpacity
                 className={'bg-tertiary rounded'}
@@ -61,6 +63,7 @@ const Login = ({navigation}: any) => {
             </View>
             <View className={"h-1/5  w-full items-center justify-center flex-row gap-x-1"}>
                <TouchableOpacity
+                 className={'flex-row items-center gap-x-1'}
                  onPress={() => navigation.navigate('Register')}
                >
                  <Text className={"text-black font-medium  my-5"}>Not a member?</Text>
