@@ -5,28 +5,28 @@ import Payments from "./screens/ Payments.tsx";
 import Home from "./screens/Home.tsx";
 import Accounts from "./screens/Accounts.tsx";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import { Text, View } from "react-native";
+import { CustomTabLabel } from "./CustomTabLabel.tsx";
 import React from "react";
+import { TopBar } from "./TopBar.tsx";
 
 const Tab = createBottomTabNavigator();
 
 const homeName: string = "Home";
 const paymentsName: string  = "Payments";
 const accountsName: string  = "Accounts";
-interface TabLabelProps {
-  label: string;
-  focused: boolean;
-}
-const CustomTabLabel: React.FC<TabLabelProps> = ({ label, focused }) => (
-  <Text className={focused ? 'text-tertiary' : 'text-black'}>{label}</Text>
-);
 
-function Tabs() : React.JSX.Element {
+
+export default function Tabs() : React.JSX.Element {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          header: () => <TopBar />,
+        }}
+      >
         <Tab.Screen
           name={homeName}
           component={Home}
@@ -76,4 +76,3 @@ function Tabs() : React.JSX.Element {
     </NavigationContainer>
   );
 }
-export default Tabs;

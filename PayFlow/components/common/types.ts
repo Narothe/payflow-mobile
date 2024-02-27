@@ -5,3 +5,7 @@ export interface InputInterface {
   defaultValue?: '';
   name: string;
 }
+export interface TabLabelInterface {
+  label: string;
+  focused: boolean;
+}
