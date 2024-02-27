@@ -24,6 +24,18 @@ export const checkAmount = (amount: string) => {
   return regex.test(amount);
 };
 
+export const checkDateFormat = (date: string) => {
+  const regex = /^\d{2}-\d{2}-\d{4}$/;
+  if (!regex.test(date)) {
+    return false;
+  }
+  const [dd, mm, yyyy] = date.split('-').map(Number);
+  const data = new Date(yyyy, mm - 1, dd);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return data < today;
+};
+
 export const isAccountNumberValid = (inputString: string) => {
   const stringWithoutWhitespace = inputString.replace(/\s/g, '');
   if (stringWithoutWhitespace.length !== 26) {
