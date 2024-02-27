@@ -41,8 +41,10 @@ const Register = ({navigation} : any) => {
 
   const onSubmit = (data: FormDataInterface) => {
     console.log(data)
+    navigation.navigate('PasswordForm', {data: data})
   }
-    return(
+
+  return(
         <View className=" mx-2">
           <View className={"my-5 w-full flex-row  items-center justify-between fixed top-0 left-0 "}>
             <Image source={Logo} className={"w-48 h-10 "} />
@@ -109,7 +111,7 @@ const Register = ({navigation} : any) => {
                   onPress={handleSubmit(onSubmit)}
                   className={'py-3 px-6 my-2 rounded bg-quaternary'}
                 >
-                  <Text className={'text-white'}>Prześlij</Text>
+                  <Text className={'text-white'}>Dalej </Text>
                 </TouchableOpacity>
               </View>
 
