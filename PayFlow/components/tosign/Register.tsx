@@ -9,6 +9,14 @@ import { useForm } from "react-hook-form";
 import Standard from '../../assets/imgs/banking.png'
 // @ts-ignore
 import Intensive from '../../assets/imgs/debit-card.png'
+import {
+  checkDateFormat,
+  checkEmail,
+  checkHomeNumber,
+  checkPhoneNumber,
+  checkZipCode,
+  isString
+} from "../../utils/validation.ts";
 
 interface FormDataInterface {
   firstName: string;
@@ -37,11 +45,77 @@ const STANDARD = 'STANDARD';
 const Register = ({navigation} : any) => {
   const [accountType, setAccountType]=useState(STANDARD)
   const { control, handleSubmit} = useForm();
+  const [error, setError]=useState('')
 
+
+  const validate = (data: FormDataInterface) => {
+    if(!isString(data.firstName)){
+      setError('Given first name is wrong')
+      return false
+    }
+    if(!isString(data.lastName)){
+      setError('Given last name is wrong')
+      return false
+    }
+    if(!checkDateFormat(data.dayOfBirth)){
+      setError('Given day of birth is wrong')
+      return false
+    }
+    if(!isString(data.nationality)) {
+      setError('Given nationality is wrong')
+      return false
+    }
+    if( !checkEmail(data.email)) {
+      setError('Given e-mail is wrong')
+      return false
+    }
+    if (!checkPhoneNumber(data.phoneNumber)){
+      setError('Given phone number is wrong')
+      return false
+    }
+    if (!checkZipCode(data.zipCode)) {
+      setError("Given zip code in home address is wrong");
+      return false
+    }
+    if (!isString(data.city)) {
+      setError("Given city in home address is wrong");
+      return false
+    }
+    if (!checkHomeNumber(data.houseNumber)) {
+      setError("Given house number in home address is wrong");
+      return false
+    }
+    if ( !isString(data.country)) {
+      setError("Given country in home address is wrong");
+      return false
+    }
+    if (!checkZipCode(data.zipCodeCorrespondence)) {
+      setError("Given zip code in correspondence address is wrong");
+      return false
+    }
+    if (!isString(data.cityCorrespondence)) {
+      setError("Given city in correspondence address is wrong");
+      return false
+    }
+    if (!checkHomeNumber(data.houseNumberCorrespondence)) {
+      setError("Given house number in correspondence address is wrong");
+      return false
+    }
+    if (!isString(data.countryCorrespondence)) {
+      setError("Given country in correspondence address is wrong");
+      return false
+    }
+    // if (data.)
+   return true
+  }
 
   const onSubmit = (data: FormDataInterface) => {
+    if (error.trim() === '')
+      setError('')
+    if (!validate(data))
+      return
     console.log(data)
-    navigation.navigate('PasswordForm', {data: data})
+    navigation.navigate('PasswordForm', {data: data, accountType: accountType})
   }
 
   return(
@@ -107,6 +181,7 @@ const Register = ({navigation} : any) => {
                 <Input control={control} name={'houseNumberCorrespondence'} placeholder={'house number'} />
                 <Input control={control} name={'apartmentNumberCorrespondence'} placeholder={'apartment number'} />
                 <Input control={control} name={'countryCorrespondence'} placeholder={'country'}/>
+                {error.trim() !== '' && <Text className={'text-red-500'}>{error}</Text>}
                 <TouchableOpacity
                   onPress={handleSubmit(onSubmit)}
                   className={'py-3 px-6 my-2 rounded bg-quaternary'}

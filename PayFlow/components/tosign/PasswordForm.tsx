@@ -1,4 +1,5 @@
 import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+// @ts-ignore
 import Logo from '../../assets/logo/payflow.png';
 import React, {useState} from 'react';
 
@@ -46,7 +47,9 @@ const PasswordForm = ({navigation, route}: any) => {
           placeholder={'Repeat password'}
           className={'w-3/4 h-10  bg-gray-300 rounded-2xl px-3 my-2 capitalize'}
         />
-        {error && <Text className={'text-red-500'}>Password are not the same</Text>}
+        {error && (
+          <Text className={'text-red-500'}>Password are not the same</Text>
+        )}
         <TouchableOpacity
           onPress={submitForm}
           className={'py-3 px-6 my-4 rounded bg-quaternary'}>
@@ -63,9 +66,7 @@ const PasswordForm = ({navigation, route}: any) => {
         <Text className={'text-black font-semibold  capitalize'}>
           • large and small liters
         </Text>
-        <Text className={'text-black font-semibold  capitalize'}>
-          • Digits
-        </Text>
+        <Text className={'text-black font-semibold  capitalize'}>• Digits</Text>
         <Text className={'text-black font-semibold capitalize'}>
           • special characters
         </Text>

@@ -1,30 +1,37 @@
 export const checkPhoneNumber = (number: string) => {
+  if (!checkGoodValue(number)) return false;
   const regex = /^\d{9}$/;
   return regex.test(number);
 };
 export const checkEmail = (email: string) => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!checkGoodValue(email)) return false;
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return regex.test(email);
 };
 export const checkZipCode = (code: string) => {
+  if (!checkGoodValue(code)) return false;
   const regex = /^\d{2}-\d{3}$/;
   return regex.test(code);
 };
 export const checkHomeNumber = (number: string) => {
+  if (!checkGoodValue(number)) return false;
   const regex = /^[a-zA-Z0-9\s]+$/;
   return regex.test(number);
 };
 export const isString = (s: string) => {
+  if (!checkGoodValue(s)) return false;
   const regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
   return regex.test(s);
 };
 
 export const checkAmount = (amount: string) => {
+  if (!checkGoodValue(amount)) return false;
   const regex = /^[0-9]+([,.][0-9]+)?$/;
   return regex.test(amount);
 };
 
 export const checkDateFormat = (date: string) => {
+  if (!checkGoodValue(date)) return false;
   const regex = /^\d{2}-\d{2}-\d{4}$/;
   if (!regex.test(date)) {
     return false;
@@ -47,4 +54,8 @@ export const isAccountNumberValid = (inputString: string) => {
     }
   }
   return true;
+};
+
+export const checkGoodValue = (input: string | undefined | null) => {
+  return !(typeof input === 'undefined' || input === null);
 };

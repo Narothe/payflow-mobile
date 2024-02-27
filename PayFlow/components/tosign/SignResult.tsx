@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 
-const SignResult = () => {
+const SignResult = ({navigation, route}: any) => {
   return (
     <View>
       <Text>wqe123123weqwe</Text>
