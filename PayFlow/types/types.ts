@@ -4,4 +4,5 @@ export interface InputInterface {
   control: Control;
   defaultValue?: '';
   name: string;
+  placeholder: string;
 }

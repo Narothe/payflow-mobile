@@ -47,11 +47,13 @@ const Login = ({navigation}: any) => {
               <Input
                 name="login"
                 control={control}
+                placeholder={'login'}
                 // defaultValue={''}
               />
               <Input
                 name="password"
                 control={control}
+                placeholder={'password'}
                 // defaultValue={''}
               />
               <TouchableOpacity
