@@ -2,20 +2,25 @@ import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 // @ts-ignore
 import Logo from '../../assets/logo/payflow.png';
 import React, {useState} from 'react';
+import {checkPasswordStrength} from '../../utils/validation.ts';
 
 const PasswordForm = ({navigation, route}: any) => {
   const [password, setPassword] = useState('');
   const [passwordRepeated, setPasswordRepeated] = useState('');
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
 
   const submitForm = () => {
+    if (!checkPasswordStrength(password)) {
+      setError('Try with stronger password');
+      return;
+    }
     if (password.trim() === passwordRepeated.trim()) {
       navigation.navigate('SignResult', {
         data: route.params.data,
         password: password,
       });
     } else {
-      setError(true);
+      setError('Password are not the same');
     }
   };
 
@@ -47,9 +52,7 @@ const PasswordForm = ({navigation, route}: any) => {
           placeholder={'Repeat password'}
           className={'w-3/4 h-10  bg-gray-300 rounded-2xl px-3 my-2 capitalize'}
         />
-        {error && (
-          <Text className={'text-red-500'}>Password are not the same</Text>
-        )}
+        {error.trim() !== '' && <Text className={'text-red-500'}>{error}</Text>}
         <TouchableOpacity
           onPress={submitForm}
           className={'py-3 px-6 my-4 rounded bg-quaternary'}>
