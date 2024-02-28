@@ -34,3 +34,18 @@ export interface TabLabelInterface {
   label: string;
   focused: boolean;
 }
+enum Currency {
+  PLN,
+  EUR,
+  USD
+}
+enum AccountNumberType {
+  STANDARD,
+  INTENSIVE
+}
+export interface AccountInterface {
+  number: string;
+  currency: Currency;
+  balance: number;
+  type: AccountNumberType;
+}
