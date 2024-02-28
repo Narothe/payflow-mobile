@@ -7,5 +7,5 @@ export const config = {
     Authorization: `Bearer ${getData(TOKEN_KEY)}`,
   },
 };
-export const isLogged = !isExpired(await getData(TOKEN_KEY));
-export const user = decodeToken(await getData(TOKEN_KEY));
+export const isLogged = !isExpired(getData(TOKEN_KEY));
+export const user = decodeToken(getData(TOKEN_KEY));

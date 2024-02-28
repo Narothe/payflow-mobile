@@ -18,3 +18,11 @@ export const getData = async (key: string) => {
     console.log(`Get date with key: ${key} is not working`);
   }
 };
+
+export const removeData = async (key: string) => {
+  try {
+    await AsyncStorage.removeItem(key);
+  } catch (e) {
+    console.log(`Get date with key: ${key} is not working`);
+  }
+};
