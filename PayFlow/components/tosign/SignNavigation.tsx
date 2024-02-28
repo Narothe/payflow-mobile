@@ -6,6 +6,7 @@ import Login from "./Login.tsx";
 import Register from "./Register.tsx";
 import PasswordForm from "./PasswordForm.tsx";
 import SignResult from "./SignResult.tsx";
+import App from "../../App.tsx";
 
 const Stack = createNativeStackNavigator();
 const SignNavigation = () => {
@@ -31,6 +32,11 @@ const SignNavigation = () => {
         <Stack.Screen
           name="SignResult"
           component={SignResult}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="App"
+          component={App}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
