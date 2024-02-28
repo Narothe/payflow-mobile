@@ -4,7 +4,7 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Logo from '../../assets/logo/payflow.png';
 import React, { useState } from "react";
 import Input from "../common/Input.tsx";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 // @ts-ignore
 import Standard from '../../assets/imgs/banking.png'
 // @ts-ignore
@@ -105,15 +105,14 @@ const Register = ({navigation} : any) => {
       setError("Given country in correspondence address is wrong");
       return false
     }
-    // if (data.)
    return true
   }
 
-  const onSubmit = (data: FormDataInterface) => {
+  const onSubmit = (data: any) => {
     if (error.trim() === '')
       setError('')
-    if (!validate(data))
-      return
+    // if (!validate(data))
+    //   return
     console.log(data)
     navigation.navigate('PasswordForm', {data: data, accountType: accountType})
   }

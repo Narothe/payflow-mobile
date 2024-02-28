@@ -43,11 +43,13 @@ const PasswordForm = ({navigation, route}: any) => {
           Set password
         </Text>
         <TextInput
+          secureTextEntry={true}
           onChangeText={setPassword}
           placeholder={'Password'}
           className={'w-3/4 h-10  bg-gray-300 rounded-2xl px-3 my-2 capitalize'}
         />
         <TextInput
+          secureTextEntry={true}
           onChangeText={setPasswordRepeated}
           placeholder={'Repeat password'}
           className={'w-3/4 h-10  bg-gray-300 rounded-2xl px-3 my-2 capitalize'}
