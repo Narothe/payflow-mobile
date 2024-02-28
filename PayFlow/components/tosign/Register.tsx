@@ -21,22 +21,22 @@ import {
 interface FormDataInterface {
   firstName: string;
   lastName: string;
-  dayOfBirth: string;
+  dateOfBirth: string;
   nationality: string;
   email: string;
   phoneNumber: string;
   zipCode: string;
   city: string;
   street: string;
-  houseNumber: string;
+  homeNumber: string;
   apartmentNumber: string;
-  country: string;
+  countryAddress: string;
   zipCodeCorrespondence: string;
   cityCorrespondence: string;
   streetCorrespondence: string;
-  houseNumberCorrespondence: string;
+  homeNumberCorrespondence: string;
   apartmentNumberCorrespondence: string;
-  countryCorrespondence: string;
+  countryAddressCorrespondence: string;
 
 }
 
@@ -57,7 +57,7 @@ const Register = ({navigation} : any) => {
       setError('Given last name is wrong')
       return false
     }
-    if(!checkDateFormat(data.dayOfBirth)){
+    if(!checkDateFormat(data.dateOfBirth)){
       setError('Given day of birth is wrong')
       return false
     }
@@ -81,11 +81,11 @@ const Register = ({navigation} : any) => {
       setError("Given city in home address is wrong");
       return false
     }
-    if (!checkHomeNumber(data.houseNumber)) {
-      setError("Given house number in home address is wrong");
+    if (!checkHomeNumber(data.homeNumber)) {
+      setError("Given home number in home address is wrong");
       return false
     }
-    if ( !isString(data.country)) {
+    if ( !isString(data.countryAddress)) {
       setError("Given country in home address is wrong");
       return false
     }
@@ -97,11 +97,11 @@ const Register = ({navigation} : any) => {
       setError("Given city in correspondence address is wrong");
       return false
     }
-    if (!checkHomeNumber(data.houseNumberCorrespondence)) {
-      setError("Given house number in correspondence address is wrong");
+    if (!checkHomeNumber(data.homeNumberCorrespondence)) {
+      setError("Given home number in correspondence address is wrong");
       return false
     }
-    if (!isString(data.countryCorrespondence)) {
+    if (!isString(data.countryAddressCorrespondence)) {
       setError("Given country in correspondence address is wrong");
       return false
     }
@@ -111,8 +111,8 @@ const Register = ({navigation} : any) => {
   const onSubmit = (data: any) => {
     if (error.trim() === '')
       setError('')
-    // if (!validate(data))
-    //   return
+    if (!validate(data))
+      return
     console.log(data)
     navigation.navigate('PasswordForm', {data: data, accountType: accountType})
   }
@@ -159,8 +159,8 @@ const Register = ({navigation} : any) => {
                 <Text className={'text-quaternary font-semibold mt-5 text-lg'}>Personal data</Text>
                 <Input control={control} name={'firstName'} placeholder={'first name'} />
                 <Input control={control} name={'lastName'} placeholder={'last name'} />
-                <Input control={control} name={'dayOfBirth'} placeholder={'day of birth'} />
-                <Text className={'w-3/4 ml-5 text-quaternary font-medium  text-xs p-0'}>Format: dd-MM-yyyy</Text>
+                <Input control={control} name={'dateOfBirth'} placeholder={'day of birth'} />
+                <Text className={'w-3/4 ml-5 text-quaternary font-medium  text-xs p-0'}>Format: yyyy-MM-dd</Text>
                 <Input control={control} name={'nationality'} placeholder={'nationality'} />
                 <Input control={control} name={'email'} placeholder={'e-mail'} />
                 <Input control={control} name={'phoneNumber'} placeholder={'phone number'} />
@@ -169,17 +169,17 @@ const Register = ({navigation} : any) => {
                 <Text className={'w-3/4 ml-5 text-quaternary font-medium  text-xs p-0'}>Format: XX-XXX</Text>
                 <Input control={control} name={'city'} placeholder={'city'} />
                 <Input control={control} name={'street'}  placeholder={'street'}/>
-                <Input control={control} name={'houseNumber'} placeholder={'house number'} />
+                <Input control={control} name={'homeNumber'} placeholder={'house number'} />
                 <Input control={control} name={'apartmentNumber'} placeholder={'apartment number'} />
-                <Input control={control} name={'country'} placeholder={'country'}/>
+                <Input control={control} name={'countryAddress'} placeholder={'country'}/>
                 <Text className={'text-quaternary font-semibold mt-5 text-lg'}>Correspondence address</Text>
                 <Input control={control} name={'zipCodeCorrespondence'} placeholder={'zip code'}/>
                 <Text className={'w-3/4 ml-5 text-quaternary font-medium  text-xs p-0'}>Format: XX-XXX</Text>
                 <Input control={control} name={'cityCorrespondence'} placeholder={'city'} />
                 <Input control={control} name={'streetCorrespondence'}  placeholder={'street'}/>
-                <Input control={control} name={'houseNumberCorrespondence'} placeholder={'house number'} />
+                <Input control={control} name={'homeNumberCorrespondence'} placeholder={'house number'} />
                 <Input control={control} name={'apartmentNumberCorrespondence'} placeholder={'apartment number'} />
-                <Input control={control} name={'countryCorrespondence'} placeholder={'country'}/>
+                <Input control={control} name={'countryAddressCorrespondence'} placeholder={'country'}/>
                 {error.trim() !== '' && <Text className={'text-red-500'}>{error}</Text>}
                 <TouchableOpacity
                   onPress={handleSubmit(onSubmit)}

@@ -46,11 +46,11 @@ export const checkDateFormat = (date: string) => {
   if (!checkGoodValue(date)) {
     return false;
   }
-  const regex = /^\d{2}-\d{2}-\d{4}$/;
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (!regex.test(date)) {
     return false;
   }
-  const [dd, mm, yyyy] = date.split('-').map(Number);
+  const [yyyy, mm, dd] = date.split('-').map(Number);
   const data = new Date(yyyy, mm - 1, dd);
   const today = new Date();
   today.setHours(0, 0, 0, 0);

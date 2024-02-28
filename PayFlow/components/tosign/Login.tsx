@@ -6,7 +6,7 @@ import axios from 'axios';
 import React, {useState} from "react";
 import {storeData} from "../../utils/storage.ts";
 import {TOKEN_KEY} from "../../config/authconfig.js";
-import { BASE_URL } from "../../config/shared";
+
 import { useForm } from 'react-hook-form';
 import Input from "../common/Input.tsx";
 

@@ -3,6 +3,9 @@ import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Logo from '../../assets/logo/payflow.png';
 import React, {useState} from 'react';
 import {checkPasswordStrength} from '../../utils/validation.ts';
+import {submitRegister} from '../../api/services/ToSign.ts';
+import {getData, storeData} from '../../utils/storage.ts';
+import {TOKEN_KEY} from '../../config/authconfig';
 
 const PasswordForm = ({navigation, route}: any) => {
   const [password, setPassword] = useState('');
@@ -15,10 +18,19 @@ const PasswordForm = ({navigation, route}: any) => {
       return;
     }
     if (password.trim() === passwordRepeated.trim()) {
-      navigation.navigate('SignResult', {
-        data: route.params.data,
+      const res = submitRegister({
+        ...route.params.data,
+        accountType: route.params.accountType,
         password: password,
       });
+      res.then(r => {
+        storeData(TOKEN_KEY, r.data.token);
+        navigation.navigate('SignResult', {
+          data: route.params.data,
+          password: password,
+        });
+      });
+      res.catch(err => console.log(err));
     } else {
       setError('Password are not the same');
     }
@@ -58,7 +70,7 @@ const PasswordForm = ({navigation, route}: any) => {
         <TouchableOpacity
           onPress={submitForm}
           className={'py-3 px-6 my-4 rounded bg-quaternary'}>
-          <Text className={'text-white'}>ewqeqe</Text>
+          <Text className={'text-white'}>Dalej</Text>
         </TouchableOpacity>
       </View>
       <View className={'my-5 absolute bottom-0 left-0'}>
