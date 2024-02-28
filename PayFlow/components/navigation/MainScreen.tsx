@@ -21,7 +21,6 @@ const accountsName: string  = "Accounts";
 
 export default function Tabs() : React.JSX.Element {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           header: () => <TopBar />,
@@ -73,6 +72,5 @@ export default function Tabs() : React.JSX.Element {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }

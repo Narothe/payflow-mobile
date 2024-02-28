@@ -29,8 +29,6 @@ import MainScreen from "./components/navigation/MainScreen.tsx";
 
 
 function App(): React.JSX.Element {
-
-
   return (
     <MainScreen/>
   );
