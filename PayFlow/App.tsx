@@ -1,36 +1,32 @@
 /* eslint-disable */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import MainScreen from "./components/navigation/MainScreen.tsx";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "./components/tosign/Login.tsx";
+import Settings from "./components/settings/Settings.tsx";
 
-
+const Stack = createNativeStackNavigator();
 function App(): React.JSX.Element {
   return (
-    <MainScreen/>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/*<MainScreen/>*/}
+        <Stack.Screen
+          name="MainScreen"
+          component={MainScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SettingsScreen"
+          component={Settings}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

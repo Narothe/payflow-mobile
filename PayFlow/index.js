@@ -8,4 +8,4 @@ import Login from './components/tosign/Login';
 import {name as appName} from './app.json';
 import SignNavigation from './components/tosign/SignNavigation';
 
-AppRegistry.registerComponent(appName, () => SignNavigation);
+AppRegistry.registerComponent(appName, () => App);
