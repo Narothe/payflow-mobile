@@ -30,7 +30,7 @@ const accounts: AccountInterface[] = [
 
 export default function(): React.JSX.Element {
   return (
-    <View className="flex-1">
+    <View className="flex-1 bg-secondary">
         <AccountsList accounts={accounts}/>
     </View>
   );
