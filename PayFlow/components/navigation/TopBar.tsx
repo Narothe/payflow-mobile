@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Image, View } from "react-native";
+// @ts-ignore
 import Logo from "../../assets/logo/payflow.png";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";

@@ -26,11 +26,14 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import MainScreen from "./components/navigation/MainScreen.tsx";
+import { NavigationContainer } from "@react-navigation/native";
 
 
 function App(): React.JSX.Element {
   return (
-    <MainScreen/>
+    <NavigationContainer>
+      <MainScreen/>
+    </NavigationContainer>
   );
 }
 

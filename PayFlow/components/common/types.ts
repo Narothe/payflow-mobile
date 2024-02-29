@@ -35,13 +35,13 @@ export interface TabLabelInterface {
   focused: boolean;
 }
 export enum Currency {
-  PLN,
-  EUR,
-  USD
+  PLN = "PLN",
+  EUR = "EUR",
+  USD = "USD"
 }
 export enum AccountNumberType {
-  STANDARD,
-  INTENSIVE
+  STANDARD = "STANDARD",
+  INTENSIVE = "INTENSIVE"
 }
 export interface AccountInterface {
   id: number;

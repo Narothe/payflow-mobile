@@ -15,3 +15,14 @@ export function formatAccountNumber(accountNumber: string): string {
 
   return `${firstTwoDigits} ${chunks.join(' ')}`;
 }
+export function truncateAccountNumber(accountNumber: string): string {
+  if (!accountNumber) {
+    return '';
+  }
+
+  const accountString: string = accountNumber.toString();
+  const firstFourDigits: string = accountString.substring(0, 4);
+  const lastFourDigits: string = accountString.substring(accountString.length - 4);
+
+  return `${firstFourDigits}...${lastFourDigits}`;
+}
