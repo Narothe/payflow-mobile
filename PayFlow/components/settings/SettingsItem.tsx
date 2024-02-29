@@ -1,23 +1,27 @@
 /* eslint-disable */
 import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { ReactElement } from "react";
 import Ionicons from "react-native-vector-icons/AntDesign";
-import { UserData } from "../../types/types.ts";
+import { StackNavigator, UserData } from "../../types/types.ts";
+import { Icon } from "react-native-vector-icons/Icon";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import PersonalData from "./PersonalData.tsx";
 
 type Props = {
   title: string;
-  icon: React.Component
-  navName: string;
-  data: UserData
+  icon: ReactElement<Icon>
+  nav: string;
+  data?: UserData
 };
 
 const SettingsItem:React.FC<Props> = (props) => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<StackNavigator>>()
   return (
     <TouchableOpacity
       className={'flex-row justify-between items-center px-2 py-3 bg-primary border-t-2 border-gray-200'}
-      onPress={() => navigation.navigate(props.navName, {data:props.data})}
+      onPress={() => navigation.navigate(props.nav, {data: props.data})}
     >
       <View  className={'flex-row items-center justify-center gap-x-2'}>
         {props.icon}

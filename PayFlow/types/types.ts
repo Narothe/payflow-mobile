@@ -52,3 +52,13 @@ export interface UserData {
   correspondenceAddress: Address;
   residentialAddress: Address;
 }
+
+export type StackNavigator = {
+  Login: undefined;
+  Register: undefined;
+  PasswordForm: undefined;
+  SignResult: undefined;
+  MainScreen: undefined;
+  Settings: undefined;
+  PersonalData: undefined;
+};

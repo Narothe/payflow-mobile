@@ -7,11 +7,16 @@ import GoBackTitle from "../common/GoBackTitle.tsx";
 import { useNavigation } from "@react-navigation/native";
 import { getData } from "../../utils/storage.ts";
 import { getUserData } from "../../api/services/UserData.ts";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigator } from "../../types/types.ts";
+import PersonalData from "./PersonalData.tsx";
 
 
 const Settings = () => {
-  const navigation = useNavigation()
-  const [data, setData]=useState({})
+  const navigation =
+    useNavigation<NativeStackNavigationProp<StackNavigator>>()
+
+  const [data, setData]=useState()
   useEffect(() => {
 
     getUserData()
@@ -33,34 +38,38 @@ const Settings = () => {
         <SettingsItem
           title={'personal data'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
           data={data}
         />
         <SettingsItem
           title={'contact data'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
+          data={data}
         />
         <SettingsItem
           title={'home address'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
+          data={data}
         />
         <SettingsItem
           title={'correspondence address'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
+          data={data}
         />
         <Text className={'ml-5 my-2 capitalize font-medium'}>other</Text>
         <SettingsItem
           title={'contact'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
+
         />
         <SettingsItem
           title={'about us'}
           icon={ <Ionicons name={'pluscircle'} size={20} color={"#6b43be"} />}
-          navName={'PersonalData'}
+          nav={'PersonalData'}
         />
       </View>
       <View className={'justify-center  items-center mt-10'}>

@@ -5,10 +5,12 @@ import Logo from "../../assets/logo/payflow.png";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigator } from "../../types/types.ts";
 
 
 const TopBar = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigator>>();
 
 
   return(
@@ -18,7 +20,7 @@ const TopBar = () => {
       </View>
       <View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('SettingsScreen')}
+          onPress={() => navigation.navigate('Settings')}
         >
           <Ionicons name={'settings'} size={30} color={"#000"} />
         </TouchableOpacity>

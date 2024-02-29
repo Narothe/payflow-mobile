@@ -11,8 +11,11 @@ import MainScreen from "../components/navigation/MainScreen.tsx";
 import Settings from "../components/settings/Settings.tsx";
 import PersonalData from "../components/settings/PersonalData.tsx";
 import React from "react";
+import { StackNavigator } from "../types/types.ts";
 
-const Stack = createNativeStackNavigator();
+
+
+const Stack = createNativeStackNavigator<StackNavigator>()
 const Navigation = () => {
 
   return(
@@ -49,7 +52,7 @@ const Navigation = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="SettingsScreen"
+          name="Settings"
           component={Settings}
           options={{ headerShown: false }}
         />
