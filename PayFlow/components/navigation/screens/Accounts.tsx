@@ -19,13 +19,13 @@ const accounts: AccountInterface[] = [
     balance: 500,
     type: AccountNumberType.STANDARD,
   },
-  {
-    id: 3,
-    number: '9876543210',
-    currency: Currency.PLN,
-    balance: 750,
-    type: AccountNumberType.INTENSIVE,
-  },
+  // {
+  //   id: 3,
+  //   number: '9876543210',
+  //   currency: Currency.PLN,
+  //   balance: 750,
+  //   type: AccountNumberType.INTENSIVE,
+  // },
 ];
 
 export default function(): React.JSX.Element {
