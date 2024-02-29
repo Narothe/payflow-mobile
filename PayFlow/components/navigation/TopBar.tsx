@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
 
 export const TopBar = () => (
-  <View className="flex justify-between flex-row p-3 bg-secondary">
+  <View className="flex justify-between flex-row p-3 bg-white border-b-2">
     <View className="flex w-2/6 h-7">
       <Image source={Logo} className={"w-full h-full"} />
     </View>
