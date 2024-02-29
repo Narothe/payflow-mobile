@@ -10,7 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { CustomTabLabel } from "./CustomTabLabel.tsx";
 import React from "react";
-import { TopBar } from "./TopBar.tsx";
+import TopBar  from "./TopBar.tsx";
 
 const Tab = createBottomTabNavigator();
 

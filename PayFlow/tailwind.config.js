@@ -8,12 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#F6F5F5',
-        secondary: '#D3E0EA',
-        tertiary: '#1687A7',
-        quaternary: '#276678',
-        black: '#303841',
-        white: '#F3F3F3',
+        primary: '#fefdff',
+        secondary: '#f6f6f6',
+        tertiary: '#78797a',
+        quaternary: '#6b43be',
+        quinary: '#141414',
+        // black: '#303841',
+        // white: '#F3F3F3',
       },
     },
   },

@@ -1,17 +1,27 @@
 /* eslint-disable */
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 // @ts-ignore
 import Logo from "../../assets/logo/payflow.png";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-export const TopBar = () => (
-  <View className="flex justify-between flex-row p-3 bg-white border-b-2">
-    <View className="flex w-2/6 h-7">
-      <Image source={Logo} className={"w-full h-full"} />
+
+const TopBar = () => {
+  const navigation = useNavigation();
+  return(
+    <View className="flex justify-between flex-row p-3 bg-secondary">
+      <View className="flex w-2/6 h-7">
+        <Image source={Logo} className={"w-full h-full"} />
+      </View>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('SettingsScreen')}
+        >
+          <Ionicons name={'settings'} size={30} color={"#000"} />
+        </TouchableOpacity>
+      </View>
     </View>
-    <View>
-      <Ionicons name={'settings'} size={30} color={"#000"} />
-    </View>
-  </View>
-);
+  )
+}
+export default TopBar;

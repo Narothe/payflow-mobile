@@ -5,7 +5,7 @@ import React, {useState} from 'react';
 import {checkPasswordStrength} from '../../utils/validation.ts';
 import {submitRegister} from '../../api/services/ToSign.ts';
 import {getData, storeData} from '../../utils/storage.ts';
-import {TOKEN_KEY} from '../../config/authconfig';
+import {TOKEN_KEY} from '../../config/authconfig.ts';
 
 const PasswordForm = ({navigation, route}: any) => {
   const [password, setPassword] = useState('');
