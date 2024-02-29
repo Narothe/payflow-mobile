@@ -8,6 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./components/tosign/Login.tsx";
 import Settings from "./components/settings/Settings.tsx";
+import PersonalData from "./components/settings/PersonalData.tsx";
 
 const Stack = createNativeStackNavigator();
 function App(): React.JSX.Element {
@@ -23,6 +24,11 @@ function App(): React.JSX.Element {
         <Stack.Screen
           name="SettingsScreen"
           component={Settings}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PersonalData"
+          component={PersonalData}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

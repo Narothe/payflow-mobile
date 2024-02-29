@@ -21,10 +21,10 @@ const Login = ({navigation}: any) => {
 
       const res = submitLogin(login, password)
       res.then(r => {
-        storeData(TOKEN_KEY, r.data.token);
-        navigation.navigate('App');
+        console.log(r.data.token)
+        storeData('token-payflow', r.data.token).then(r => navigation.navigate('MainScreen'));
       });
-      res.catch(err => console.log(err));
+      res.catch(err => console.log('wqe'+err));
     }
 
     return(

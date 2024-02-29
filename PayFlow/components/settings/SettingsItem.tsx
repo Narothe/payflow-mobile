@@ -15,7 +15,7 @@ const SettingsItem:React.FC<Props> = ({title,icon, navName}) => {
   return (
     <TouchableOpacity
       className={'flex-row justify-between items-center px-2 py-3 bg-primary border-t-2 border-gray-200'}
-      // onPress={() => navigation.navigate(navName)}
+      onPress={() => navigation.navigate(navName)}
     >
       <View  className={'flex-row items-center justify-center gap-x-2'}>
         {icon}
