@@ -1,13 +1,16 @@
 /* eslint-disable */
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import { AccountTile } from "./AccountTile.tsx";
 import { NewAccount } from "./AddAccountTile.tsx";
-import { AccountInterface } from "../common/types.ts";
+import { AccountInterface, AccountNumberType } from "../common/types.ts";
+import { AccountType } from "./AccountTypeTile.tsx";
+import { StandardAccount } from "./StandardAccountTile.tsx";
+import { IntensiveAccount } from "./IntensiveAccountTile.tsx";
 
 export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ accounts }) => {
   return (
-    <ScrollView >
+    <ScrollView>
       {accounts.map((account, index) => (
         <AccountTile
           key={index}
@@ -16,8 +19,12 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
         />
       ))}
       {accounts.length < 3 && (
-        <NewAccount></NewAccount>
+        <NewAccount/>
         )}
+      <View className="flex items-center">
+        <StandardAccount/>
+        <IntensiveAccount/>
+      </View>
     </ScrollView>
   );
 };
