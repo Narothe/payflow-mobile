@@ -17,9 +17,11 @@ const GoBackTitle: React.FC<Props> = ({title}) => {
       <TouchableOpacity
         className={'absolute left-2'}
         onPress={() => navigation.goBack()}>
-        <Ionicons name={'arrowleft'} size={30} color={'#000'} />
+        <Ionicons name={'arrowleft'} size={26} color={'#141414'} />
       </TouchableOpacity>
-      <Text className={'text-2xl text-black font-bold capitalize'}>{title}</Text>
+      <Text className={'text-2xl text-quinary font-bold capitalize'}>
+        {title}
+      </Text>
     </View>
   );
 };

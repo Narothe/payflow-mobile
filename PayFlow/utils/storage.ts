@@ -2,9 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const storeData = async (key: string, value: string) => {
   try {
-    console.log('before');
     await AsyncStorage.setItem(key, value);
-    console.log('aft');
   } catch (e) {
     console.log(`Store date with key: ${key} is not working`);
   }
@@ -17,6 +15,7 @@ export const getData = async (key: string) => {
       return value;
     }
   } catch (e) {
+    console.log(e);
     console.log(`Get date with key: ${key} is not working`);
   }
 };
