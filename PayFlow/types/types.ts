@@ -29,3 +29,26 @@ export interface RegisterInterface {
   accountType: string;
   password: string;
 }
+
+export interface Address {
+  id: number;
+  street: string;
+  houseNumber: string;
+  apartmentNumber: string;
+  zipCode: string;
+  city: string;
+  country: string;
+}
+
+export interface UserData {
+  id: number;
+  firstName: string;
+  lastName: string;
+  nationality: string;
+  dateOfBirth: string;
+  login: string;
+  email: string;
+  phoneNumber: string;
+  correspondenceAddress: Address;
+  residentialAddress: Address;
+}
