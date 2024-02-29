@@ -13,16 +13,16 @@ export const StandardAccount = () => {
         <Image className="w-10 h-10" source={Standard}></Image>
       </View>
       <View className="flex-row mt-2">
-        <MaterialCommunityIcons name={'square-medium'} size={20}></MaterialCommunityIcons>
-        <Text>No minimum balance requirements.</Text>
+        <MaterialCommunityIcons name={'square-medium'} size={20} color={"#000"}></MaterialCommunityIcons>
+        <Text className="text-quinary">No minimum balance requirements.</Text>
       </View>
       <View className="flex-row">
-        <MaterialCommunityIcons name={'square-medium'} size={20}></MaterialCommunityIcons>
-        <Text>Convenient banking options.</Text>
+        <MaterialCommunityIcons name={'square-medium'} size={20} color={"#000"}></MaterialCommunityIcons>
+        <Text className="text-quinary">Convenient banking options.</Text>
       </View>
       <View className="flex-row">
-        <MaterialCommunityIcons name={'square-medium'} size={20}></MaterialCommunityIcons>
-        <Text>Easy account management.</Text>
+        <MaterialCommunityIcons name={'square-medium'} size={20} color={"#000"}></MaterialCommunityIcons>
+        <Text className="text-quinary">Easy account management.</Text>
       </View>
     </View>
   )

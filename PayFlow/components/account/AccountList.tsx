@@ -11,6 +11,7 @@ import { IntensiveAccount } from "./IntensiveAccountTile.tsx";
 export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ accounts }) => {
   return (
     <ScrollView>
+      <View className="flex items-center">
       {accounts.map((account, index) => (
         <AccountTile
           key={index}
@@ -21,7 +22,7 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
       {accounts.length < 3 && (
         <NewAccount/>
         )}
-      <View className="flex items-center">
+
         <StandardAccount/>
         <IntensiveAccount/>
       </View>
