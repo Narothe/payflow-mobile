@@ -1,28 +1,38 @@
 /* eslint-disable */
-import {View} from 'react-native';
+import { Text, View } from "react-native";
 import GoBackTitle from '../common/GoBackTitle.tsx';
 import React, {useState} from 'react';
 import InputContact from "./InputContact.tsx";
-import { changeEmail } from "../../api/services/UserData.ts";
-import { checkEmail } from "../../utils/validation.ts";
+import { changeEmail, changePhoneNumber } from "../../api/services/UserData.ts";
+import { checkEmail, checkPhoneNumber } from "../../utils/validation.ts";
 
 const ContactData = ({navigation, route}: any) => {
   const [hasEdit, setHasEdit] = useState(false);
   const [hasEditPhone, setHasEditPhone] = useState(false);
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState(route.params.data.email);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState(route.params.data.phoneNumber);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+
 
   // TODO submits
   const submitEmail = () => {
     setHasEdit(!hasEdit);
-    if (hasEdit && checkEmail(email))
-      changeEmail(email)
+    if (hasEdit)
+      if (checkEmail(email))
+        changeEmail(email)
+      else
+        setEmailError(true)
   };
 
   const submitPhoneNumber = () => {
     setHasEditPhone(!hasEditPhone);
     if (hasEditPhone)
-      console.log(phoneNumber);
+      if (checkPhoneNumber(phoneNumber))
+        changePhoneNumber(phoneNumber)
+      else
+        setPhoneNumberError(true)
+
   };
 
   return (
@@ -31,17 +41,19 @@ const ContactData = ({navigation, route}: any) => {
       <View className={'w-full items-center my-3 '}>
         <InputContact
           title={'e-mail'}
-          data={route.params.data.email}
+          data={email}
           hasEdit={hasEdit}
           setData={setEmail}
           submit={submitEmail}
+          isNotValid={emailError}
         />
         <InputContact
           title={'phone number'}
-          data={route.params.data.phoneNumber}
+          data={phoneNumber}
           hasEdit={hasEditPhone}
           setData={setPhoneNumber}
           submit={submitPhoneNumber}
+          isNotValid={phoneNumberError}
         />
       </View>
     </View>

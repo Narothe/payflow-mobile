@@ -45,7 +45,26 @@ export const changeEmail = async (email: string) => {
           },
         },
       )
-      .then(r => console.log('Email changed'))
+      .then(r => console.log(r.data))
+      .catch(er => console.log(er));
+  }
+};
+
+export const changePhoneNumber = async (phoneNumber: string) => {
+  const token = await AsyncStorage.getItem('token-payflow');
+  if (token) {
+    const user = JSON.parse(JSON.stringify(jwtDecode(token)));
+    axios
+      .patch(
+        `${BASE_URL}/api/v1/user/${user.userId}/phone-number`,
+        {phoneNumber: phoneNumber},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then(r => console.log(r.data))
       .catch(er => console.log(er));
   }
 };

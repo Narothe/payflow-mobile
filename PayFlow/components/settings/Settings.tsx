@@ -8,7 +8,7 @@ import Material from  'react-native-vector-icons/MaterialIcons';
 import React, { useEffect, useState } from "react";
 import SettingsItem from "./SettingsItem.tsx";
 import GoBackTitle from "../common/GoBackTitle.tsx";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { getData } from "../../storage/storage.ts";
 import { getUserData } from "../../api/services/UserData.ts";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -19,20 +19,21 @@ import PersonalData from "./PersonalData.tsx";
 const Settings = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<StackNavigator>>()
+  const isFocused = useIsFocused()
 
   const [data, setData]=useState()
   useEffect(() => {
-
-    getUserData()
-      .then(res => {
-        if (res != null){
-          setData(res.data)
-        }
-      })
-      .catch(error => {
-        console.error('Wystąpił błąd:', error);
-      });
-  }, [] );
+    isFocused &&
+      getUserData()
+        .then(res => {
+          if (res != null){
+            setData(res.data)
+          }
+        })
+        .catch(error => {
+          console.error('Wystąpił błąd:', error);
+        });
+  }, [isFocused] );
 
   return (
     <View className={'w-full bg-gray-200 h-full'}>
