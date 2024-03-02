@@ -1,37 +1,29 @@
 /* eslint-disable */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { AccountsList } from "../../account/AccountList.tsx";
 import { AccountInterface, AccountNumberType, Currency } from "../../common/types.ts";
+import { getDataFromToken } from "../../../config/authconfig.ts";
+import { getUserAccounts } from "../../../api/services/Account.ts";
 
-const accounts: AccountInterface[] = [
-  {
-    id: 1,
-    number: '23452345234523452345234567',
-    currency: Currency.USD,
-    balance: 1000.45,
-    type: AccountNumberType.INTENSIVE,
-  },
-  {
-    id: 2,
-    number: '0987654321',
-    currency: Currency.EUR,
-    balance: 500,
-    type: AccountNumberType.STANDARD,
-  },
-  // {
-  //   id: 3,
-  //   number: '9876543210',
-  //   currency: Currency.PLN,
-  //   balance: 750,
-  //   type: AccountNumberType.INTENSIVE,
-  // },
-];
+export default function Accounts(): React.JSX.Element {
+  const [accounts, setAccounts] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const user = await getDataFromToken();
+        const response = await getUserAccounts(user);
+        setAccounts(response.data)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    fetchData();
+  }, []);
 
-export default function(): React.JSX.Element {
   return (
     <View className="flex-1 bg-secondary">
-        <AccountsList accounts={accounts}/>
+      <AccountsList accounts={accounts}/>
     </View>
   );
 }

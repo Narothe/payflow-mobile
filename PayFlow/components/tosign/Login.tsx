@@ -3,7 +3,7 @@ import { Image, Text, View, TextInput, TouchableOpacity} from "react-native";
 // @ts-ignore
 import Logo from '../../assets/logo/payflow.png';
 import React, {useState} from "react";
-import {storeData} from "../../utils/storage.ts";
+import { storeData, storeToken } from "../../utils/storage.ts";
 import {TOKEN_KEY} from "../../config/authconfig.js";
 
 import { submitLogin } from "../../api/services/ToSign.ts";

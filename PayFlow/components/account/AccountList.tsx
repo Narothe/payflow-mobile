@@ -22,7 +22,6 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
       {accounts.length < 3 && (
         <NewAccount/>
         )}
-
         <StandardAccount/>
         <IntensiveAccount/>
       </View>
