@@ -4,9 +4,9 @@ import {BASE_URL} from '../axios.ts';
 import {getData} from '../../storage/storage.ts';
 
 import {jwtDecode} from 'jwt-decode';
-import {getUser} from '../../config/authconfig.ts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import config from 'tailwindcss/defaultConfig';
+import {Address} from '../../types/types.ts';
+import { AddressType } from "../../types/enums.ts";
 
 export const getUserData = async () => {
   return getData('token-payflow')
@@ -58,6 +58,25 @@ export const changePhoneNumber = async (phoneNumber: string) => {
       .patch(
         `${BASE_URL}/api/v1/user/${user.userId}/phone-number`,
         {phoneNumber: phoneNumber},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then(r => console.log(r.data))
+      .catch(er => console.log(er));
+  }
+};
+
+export const changeAddress = async (data: Address, type: AddressType) => {
+  const token = await AsyncStorage.getItem('token-payflow');
+  if (token) {
+    const user = JSON.parse(JSON.stringify(jwtDecode(token)));
+    axios
+      .put(
+        `${BASE_URL}/api/v1/user/${user.userId}/address?type=${type}`,
+        data,
         {
           headers: {
             Authorization: `Bearer ${token}`,
