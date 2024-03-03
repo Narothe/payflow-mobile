@@ -12,7 +12,7 @@ const GoBackTitle: React.FC<Props> = ({title}) => {
   return (
     <View
       className={
-        'flex-row items-center justify-center relative py-2 px-4 bg-primary'
+        'flex-row items-center justify-center relative py-3 px-4 bg-primary'
       }>
       <TouchableOpacity
         className={'absolute left-2'}

@@ -12,7 +12,7 @@ import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { getData } from "../../storage/storage.ts";
 import { getUserData } from "../../api/services/UserData.ts";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { StackNavigator } from "../../types/types.ts";
+import { Address, StackNavigator } from "../../types/types.ts";
 import PersonalData from "./PersonalData.tsx";
 
 
@@ -22,12 +22,14 @@ const Settings = () => {
   const isFocused = useIsFocused()
 
   const [data, setData]=useState()
+  const [homeAddress, setHomeAddress]=useState<Address>()
   useEffect(() => {
     isFocused &&
       getUserData()
         .then(res => {
           if (res != null){
             setData(res.data)
+            setHomeAddress(res.data.residentialAddress)
           }
         })
         .catch(error => {
@@ -56,7 +58,7 @@ const Settings = () => {
           title={'home address'}
           icon={ <FontMateriall name={'home-city-outline'} size={20} color={"#6b43be"} />}
           nav={'HomeAddress'}
-          data={data}
+          data={homeAddress}
         />
         <SettingsItem
           title={'correspondence address'}

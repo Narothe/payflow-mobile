@@ -1,9 +1,10 @@
-import {getData} from '../utils/storage';
+import {getData} from '../storage/storage.ts';
 
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode, JwtHeader } from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const TOKEN_KEY = 'token-payflow';
-export const getToken = () => {
+export const getToken = (): string | null => {
   getData('token-payflow')
     .then(res => {
       if (res !== undefined) {
@@ -11,6 +12,7 @@ export const getToken = () => {
       }
     })
     .catch(er => console.log(er));
+  return null;
 };
 
 // export const config = {
@@ -19,4 +21,17 @@ export const getToken = () => {
 //   },
 // };
 // export const isLogged = !isExpired(getData(TOKEN_KEY));
-// export const user = jwtDecode(getToken());
+
+// export const getUser = async (): JwtHeader | null => {
+//   const token = await AsyncStorage.getItem('token-payflow');
+//   if (token) {
+//     return jwtDecode(token);
+//   }
+//   // return null;
+//   // const token = getToken();
+//   // if (token != null) {
+//   //   return jwtDecode(token);
+//   // }
+//   // return null;
+// };
+// const user = jwtDecode(getToken());

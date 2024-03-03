@@ -3,7 +3,7 @@ import { Image, Text, View, TextInput, TouchableOpacity} from "react-native";
 // @ts-ignore
 import Logo from '../../assets/logo/payflow.png';
 import React, {useState} from "react";
-import {storeData} from "../../utils/storage.ts";
+import {storeData} from "../../storage/storage.ts";
 import {TOKEN_KEY} from "../../config/authconfig.js";
 
 import { submitLogin } from "../../api/services/ToSign.ts";
@@ -24,7 +24,7 @@ const Login = ({navigation}: any) => {
         console.log(r.data.token)
         storeData('token-payflow', r.data.token).then(r => navigation.navigate('MainScreen'));
       });
-      res.catch(err => console.log('wqe'+err));
+      res.catch(err => console.log('Error when trying to log in'));
     }
 
     return(

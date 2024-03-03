@@ -21,7 +21,7 @@ const InputData:React.FC<Props> = ({title,data, hasEdit, setData}) => {
             className={
               `border-b-[1px] py-1 px-4 items-center w-full  pl-2 text-lg text-quinary focus:border-quaternary `
             }
-            placeholder={data}
+            placeholder={!hasEdit ? data: ''}
             // placeholderTextColor={!hasEdit ? '#141414' : '#f6f6f6'}
             onChangeText={setData}
             editable={hasEdit}

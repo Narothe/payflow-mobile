@@ -9,18 +9,16 @@ import { checkEmail, checkPhoneNumber } from "../../utils/validation.ts";
 const ContactData = ({navigation, route}: any) => {
   const [hasEdit, setHasEdit] = useState(false);
   const [hasEditPhone, setHasEditPhone] = useState(false);
-  const [email, setEmail] = useState(route.params.data.email);
+  const [email, setEmail] = useState(route.params.email);
   const [emailError, setEmailError] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState(route.params.data.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(route.params.phoneNumber);
   const [phoneNumberError, setPhoneNumberError] = useState(false);
 
-
-  // TODO submits
   const submitEmail = () => {
     setHasEdit(!hasEdit);
     if (hasEdit)
-      if (checkEmail(email))
-        changeEmail(email)
+      if (checkEmail(email.toLowerCase()) && email.trim() !== route.params.email)
+        changeEmail(email.toLowerCase())
       else
         setEmailError(true)
   };
@@ -28,7 +26,7 @@ const ContactData = ({navigation, route}: any) => {
   const submitPhoneNumber = () => {
     setHasEditPhone(!hasEditPhone);
     if (hasEditPhone)
-      if (checkPhoneNumber(phoneNumber))
+      if (checkPhoneNumber(phoneNumber) && phoneNumber.trim() !== route.params.phoneNumber)
         changePhoneNumber(phoneNumber)
       else
         setPhoneNumberError(true)

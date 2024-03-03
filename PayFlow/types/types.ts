@@ -31,7 +31,7 @@ export interface RegisterInterface {
 }
 
 export interface Address {
-  id: number;
+  id?: number;
   street: string;
   houseNumber: string;
   apartmentNumber: string;
@@ -61,4 +61,6 @@ export type StackNavigator = {
   MainScreen: undefined;
   Settings: undefined;
   PersonalData: undefined;
+  ContactData: undefined;
+  HomeAddress: undefined;
 };

@@ -12,6 +12,8 @@ import Settings from "../components/settings/Settings.tsx";
 import PersonalData from "../components/settings/PersonalData.tsx";
 import React from "react";
 import { StackNavigator } from "../types/types.ts";
+import ContactData from "../components/settings/ContactData.tsx";
+import AddressData from "../components/settings/AddressData.tsx";
 
 
 
@@ -59,6 +61,16 @@ const Navigation = () => {
         <Stack.Screen
           name="PersonalData"
           component={PersonalData}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ContactData"
+          component={ContactData}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HomeAddress"
+          component={AddressData}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
