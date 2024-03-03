@@ -44,7 +44,7 @@ const Settings = () => {
     <View className={'w-full bg-gray-200 h-full'}>
       <GoBackTitle title='settings' />
       <View className={''}>
-        <Text className={'ml-5 my-2 capitalize font-medium'}>About you</Text>
+        <Text className={'ml-5 my-2 capitalize font-medium'}>About me</Text>
         <SettingsItem
           title={'personal data'}
           icon={ <IoniconsInfo name={'people-outline'} size={20} color={"#6b43be"} />}
@@ -90,12 +90,14 @@ const Settings = () => {
           title={'contact'}
           icon={ <FontMateriall name={'contactless-payment-circle-outline'} size={20} color={"#6b43be"} />}
           nav={'PersonalData'}
+          data={data}
 
         />
         <SettingsItem
           title={'about us'}
           icon={ <IoniconsInfo name={'information-circle-outline'} size={20} color={"#6b43be"} />}
-          nav={'PersonalData'}
+          nav={'AboutUs'}
+          data={data}
         />
       </View>
       <View className={'justify-center  items-center mt-10'}>
