@@ -73,6 +73,11 @@ const Navigation = () => {
           component={AddressData}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="CorrespondenceAddress"
+          component={AddressData}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

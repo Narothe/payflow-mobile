@@ -14,6 +14,7 @@ import { getUserData } from "../../api/services/UserData.ts";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Address, StackNavigator } from "../../types/types.ts";
 import PersonalData from "./PersonalData.tsx";
+import { AddressType } from "../../types/enums.ts";
 
 
 const Settings = () => {
@@ -23,6 +24,7 @@ const Settings = () => {
 
   const [data, setData]=useState()
   const [homeAddress, setHomeAddress]=useState<Address>()
+  const [correspondenceAddress, setCorrespondenceAddress]=useState<Address>()
   useEffect(() => {
     isFocused &&
       getUserData()
@@ -30,6 +32,7 @@ const Settings = () => {
           if (res != null){
             setData(res.data)
             setHomeAddress(res.data.residentialAddress)
+            setCorrespondenceAddress(res.data.correspondenceAddress)
           }
         })
         .catch(error => {
@@ -58,13 +61,29 @@ const Settings = () => {
           title={'home address'}
           icon={ <FontMateriall name={'home-city-outline'} size={20} color={"#6b43be"} />}
           nav={'HomeAddress'}
-          data={homeAddress}
+          data={{address: {
+                  zipCode: homeAddress?.zipCode,
+                  city: homeAddress?.city,
+                  street: homeAddress?.street,
+                  houseNumber: homeAddress?.houseNumber,
+                  apartmentNumber: homeAddress?.apartmentNumber,
+                  country: homeAddress?.country
+                },
+                addressType: AddressType.RESIDENTIAL}
+          }
         />
         <SettingsItem
           title={'correspondence address'}
           icon={ <FontMateriall name={'city-variant-outline'} size={20} color={"#6b43be"} />}
-          nav={'PersonalData'}
-          data={data}
+          nav={'CorrespondenceAddress'}
+          data={{address: {
+              zipCode: correspondenceAddress?.zipCode,
+              city: correspondenceAddress?.city,
+              street: correspondenceAddress?.street,
+              houseNumber: correspondenceAddress?.houseNumber,
+              apartmentNumber: correspondenceAddress?.apartmentNumber,
+              country: correspondenceAddress?.country
+            }, addressType: AddressType.CORRESPONDENCE}}
         />
         <Text className={'ml-5 my-2 capitalize font-medium'}>other</Text>
         <SettingsItem

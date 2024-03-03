@@ -63,4 +63,5 @@ export type StackNavigator = {
   PersonalData: undefined;
   ContactData: undefined;
   HomeAddress: undefined;
+  CorrespondenceAddress: undefined;
 };

@@ -11,14 +11,13 @@ import { Address } from "../../types/types.ts";
 
 const AddressData= ({navigation, route}: any) => {
   const [hasEdit, setHasEdit] = useState(false);
-  const [zipCode, setZipCode] = useState(route.params.zipCode);
-  const [city, setCity] = useState(route.params.city);
-  const [street, setStreet] = useState(route.params.street);
-  const [houseNumber, setHouseNumber] = useState(route.params.houseNumber);
-  const [apartmentNumber, setApartmentNumber] = useState(route.params.apartmentNumber);
-  const [country, setCountry] = useState(route.params.country);
+  const [zipCode, setZipCode] = useState(route.params.address.zipCode);
+  const [city, setCity] = useState(route.params.address.city);
+  const [street, setStreet] = useState(route.params.address.street);
+  const [houseNumber, setHouseNumber] = useState(route.params.address.houseNumber);
+  const [apartmentNumber, setApartmentNumber] = useState(route.params.address.apartmentNumber);
+  const [country, setCountry] = useState(route.params.address.country);
   const [isNotValidData, setIsNotValidData]=useState(false)
-
 
   const submitData = () => {
     setHasEdit(!hasEdit);
@@ -39,12 +38,10 @@ const AddressData= ({navigation, route}: any) => {
           houseNumber: houseNumber,
           apartmentNumber: apartmentNumber,
           country: country.toLowerCase()
-        },
-          AddressType.RESIDENTIAL)
+        }, route.params.addressType)
       else
         setIsNotValidData(true)
   };
-
 
   return(
     <View>
@@ -87,7 +84,7 @@ const AddressData= ({navigation, route}: any) => {
             hasEdit={hasEdit}
             setData={setCountry}
           />
-          {isNotValidData && <Text className={'text-red-500'}>Incorrect data</Text>}
+          {isNotValidData && <Text className={'text-red-500 text-center'}>Incorrect data</Text>}
           <View className={'items-center my-2'}>
             <TouchableOpacity
               onPress={submitData}
