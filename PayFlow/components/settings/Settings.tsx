@@ -89,15 +89,13 @@ const Settings = () => {
         <SettingsItem
           title={'contact'}
           icon={ <FontMateriall name={'contactless-payment-circle-outline'} size={20} color={"#6b43be"} />}
-          nav={'PersonalData'}
-          data={data}
+          nav={'ContactUs'}
 
         />
         <SettingsItem
           title={'about us'}
           icon={ <IoniconsInfo name={'information-circle-outline'} size={20} color={"#6b43be"} />}
           nav={'AboutUs'}
-          data={data}
         />
       </View>
       <View className={'justify-center  items-center mt-10'}>

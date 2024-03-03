@@ -15,6 +15,7 @@ import { StackNavigator } from "../types/types.ts";
 import ContactData from "../components/settings/ContactData.tsx";
 import AddressData from "../components/settings/AddressData.tsx";
 import AboutUs from "../components/settings/AboutUs.tsx";
+import ContactUs from "../components/settings/ContactUs.tsx";
 
 
 
@@ -82,6 +83,11 @@ const Navigation = () => {
         <Stack.Screen
           name="AboutUs"
           component={AboutUs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ContactUs"
+          component={ContactUs}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
