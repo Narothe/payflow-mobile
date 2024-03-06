@@ -12,7 +12,6 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <ScrollView>
       <View className="flex items-center">
       {accounts.map((account, index) => (
         <AccountTile
@@ -28,6 +27,5 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
         <StandardAccount/>
         <IntensiveAccount/>
       </View>
-    </ScrollView>
   );
 };
