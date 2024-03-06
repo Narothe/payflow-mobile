@@ -4,9 +4,9 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { AccountInterface } from "../common/types.ts";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-export const NewAccount = () => {
+export const NewAccount: React.FC<{ onPress: () => void }> = ({ onPress }) => {
   return (
-  <TouchableOpacity className="w-11/12 h-auto">
+  <TouchableOpacity className="w-11/12 h-auto" onPress={onPress}>
     <View className="flex w-full p-4 bg-primary mt-2 rounded-2xl">
       <View className="flex-row items-center">
         <View className="flex items-center">
