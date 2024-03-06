@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { Button, Modal, Text, TouchableOpacity, View } from "react-native";
 import { AccountNumberType, Currency } from "../common/types.ts";
 import { DropDown } from "../common/DropDown.tsx";
+import { getDataFromToken } from "../../config/authconfig.ts";
+import { openNewAccount } from "../../api/services/Account.ts";
+import { JwtHeader } from "jwt-decode";
 
 interface OpenAccountModalProps {
   isOpen: boolean;
@@ -18,17 +21,31 @@ const accountOptions = Object.keys(AccountNumberType).map((key:string) => ({
 }));
 
 export const OpenAccountModal: React.FC<OpenAccountModalProps> = ({ isOpen, onClose }) => {
-  const [selectedType, setSelectedType] = useState<string>('');
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(Currency.USD);
+  const defaultCurrency: string = Currency[Object.keys(Currency)[0] as keyof typeof Currency].toString();
+  const defaultAccountType: string = AccountNumberType[Object.keys(AccountNumberType)[0] as keyof typeof AccountNumberType].toString();
+  const [selectedType, setSelectedType] = useState<string>(defaultAccountType);
+  const [selectedCurrency, setSelectedCurrency] = useState<string>(defaultCurrency);
 
-  const handleOpenAccount = () => {
-    if (selectedType && selectedCurrency) {
+  const handleOpenAccount = async () => {
+    try {
+      const user: JwtHeader = await getDataFromToken();
+      const data = {
+        currency: selectedCurrency,
+        accountType: selectedType
+      }
+      console.log(selectedType," ",selectedCurrency)
+      await openNewAccount(user,data)
       onClose();
-    } else {
+    } catch (error) {
+      console.error("Error sending data:", error);
     }
   };
-  const handleCurrencySelect = (value: string | number) => {
-    console.log('Wybrana waluta:', value);
+  const handleCurrencySelect = (value: string ) => {
+    setSelectedCurrency(value);
+  };
+
+  const handleAccountTypeSelect = (value: string) => {
+    setSelectedType(value);
   };
   return (
     <Modal
@@ -39,7 +56,7 @@ export const OpenAccountModal: React.FC<OpenAccountModalProps> = ({ isOpen, onCl
       <View className="flex-1 justify-center items-center bg-quinary/50">
         <View className="w-4/5 bg-secondary p-5 rounded-xl" >
           <Text className="text-black ">Choose account type:</Text>
-          <DropDown options={accountOptions} onSelect={handleCurrencySelect}/>
+          <DropDown options={accountOptions} onSelect={handleAccountTypeSelect}/>
           <Text className="text-black pt-3">Choose currency:</Text>
           <DropDown options={currencyOptions} onSelect={handleCurrencySelect}/>
           <View className={'justify-center mt-4 items-center'}>
