@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import { AccountTile } from "./AccountTile.tsx";
 import { NewAccount } from "./AddAccountTile.tsx";
 import { AccountInterface, AccountNumberType } from "../common/types.ts";

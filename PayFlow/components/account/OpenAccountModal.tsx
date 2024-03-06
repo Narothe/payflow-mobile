@@ -1,11 +1,12 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { Button, Modal, Text, TouchableOpacity, View } from "react-native";
+import { Modal, Text, TouchableOpacity, View } from "react-native";
 import { AccountNumberType, Currency } from "../common/types.ts";
 import { DropDown } from "../common/DropDown.tsx";
 import { getDataFromToken } from "../../config/authconfig.ts";
 import { openNewAccount } from "../../api/services/Account.ts";
 import { JwtHeader } from "jwt-decode";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 interface OpenAccountModalProps {
   isOpen: boolean;
@@ -55,6 +56,11 @@ export const OpenAccountModal: React.FC<OpenAccountModalProps> = ({ isOpen, onCl
       onRequestClose={onClose}>
       <View className="flex-1 justify-center items-center bg-quinary/50">
         <View className="w-4/5 bg-secondary p-5 rounded-xl" >
+          <View className="items-end">
+            <TouchableOpacity onPress={onClose}>
+              <AntDesign name="close" size={25} color="#6b43be" />
+            </TouchableOpacity>
+          </View>
           <Text className="text-black ">Choose account type:</Text>
           <DropDown options={accountOptions} onSelect={handleAccountTypeSelect}/>
           <Text className="text-black pt-3">Choose currency:</Text>
