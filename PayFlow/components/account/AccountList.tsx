@@ -1,14 +1,16 @@
 /* eslint-disable */
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 import { AccountTile } from "./AccountTile.tsx";
 import { NewAccount } from "./AddAccountTile.tsx";
 import { AccountInterface, AccountNumberType } from "../common/types.ts";
-import { AccountType } from "./AccountTypeTile.tsx";
 import { StandardAccount } from "./StandardAccountTile.tsx";
 import { IntensiveAccount } from "./IntensiveAccountTile.tsx";
+import { OpenAccountModal } from "./OpenAccountModal.tsx";
 
 export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ accounts }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   return (
     <ScrollView>
       <View className="flex items-center">
@@ -20,8 +22,9 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
         />
       ))}
       {accounts.length < 3 && (
-        <NewAccount/>
+        <NewAccount onPress={() => setIsModalOpen(true)} />
         )}
+        <OpenAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <StandardAccount/>
         <IntensiveAccount/>
       </View>
