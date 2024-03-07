@@ -10,6 +10,7 @@ import App from "../App.tsx";
 import MainScreen from "../components/navigation/MainScreen.tsx";
 import Settings from "../components/settings/Settings.tsx";
 import PersonalData from "../components/settings/PersonalData.tsx";
+import { AccountDetails } from "../components/account/AccountDetails.tsx";
 import React from "react";
 
 const Stack = createNativeStackNavigator();
@@ -58,6 +59,11 @@ const Navigation = () => {
           component={PersonalData}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="AccountDetails"
+          component={AccountDetails}
+          options={{headerShown: false}}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   )
