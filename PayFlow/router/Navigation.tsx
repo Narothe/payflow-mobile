@@ -10,13 +10,13 @@ import App from "../App.tsx";
 import MainScreen from "../components/navigation/MainScreen.tsx";
 import Settings from "../components/settings/Settings.tsx";
 import PersonalData from "../components/settings/PersonalData.tsx";
-import { AccountDetails } from "../components/account/AccountDetails.tsx";
 import React from "react";
 import { StackNavigator } from "../types/types.ts";
 import ContactData from "../components/settings/ContactData.tsx";
 import AddressData from "../components/settings/AddressData.tsx";
 import AboutUs from "../components/settings/AboutUs.tsx";
 import ContactUs from "../components/settings/ContactUs.tsx";
+import { AccountDetails } from "../components/account/AccountDetails.tsx";
 
 
 
@@ -95,7 +95,7 @@ const Navigation = () => {
           name="AccountDetails"
           component={AccountDetails}
           options={{headerShown: false}}
-          />
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

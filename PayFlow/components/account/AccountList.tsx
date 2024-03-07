@@ -4,11 +4,11 @@ import { View } from "react-native";
 import { AccountTile } from "./AccountTile.tsx";
 import { NewAccount } from "./AddAccountTile.tsx";
 import { AccountInterface, AccountNumberType } from "../common/types.ts";
+import { OpenAccountModal } from "./OpenAccountModal.tsx";
 import { StandardAccount } from "./StandardAccountTile.tsx";
 import { IntensiveAccount } from "./IntensiveAccountTile.tsx";
-import { OpenAccountModal } from "./OpenAccountModal.tsx";
 
-export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ accounts }) => {
+export const AccountsList: React.FC<{accounts: AccountInterface[],navigation:any}> = ({ accounts,navigation }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
@@ -17,7 +17,6 @@ export const AccountsList: React.FC<{accounts: AccountInterface[]}> = ({ account
         <AccountTile
           key={index}
           account={account}
-          // onPress={() => handleAccountPress(account.id)}
         />
       ))}
       {accounts.length < 3 && (
