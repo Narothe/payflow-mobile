@@ -35,3 +35,11 @@ export const getToken = (): string | null => {
 //   // return null;
 // };
 // const user = jwtDecode(getToken());
+// export const user = getData(TOKEN_KEY) && jwtDecode(getData(TOKEN_KEY));
+export const getDataFromToken = async () => {
+  const token: string | undefined = await getData(TOKEN_KEY);
+  if(token != undefined)
+    console.log(jwtDecode(token));
+    return jwtDecode(token);
+};
+

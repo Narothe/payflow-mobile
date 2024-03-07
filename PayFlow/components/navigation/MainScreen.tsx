@@ -36,7 +36,7 @@ export default function Tabs() : React.JSX.Element {
               <Ionicons
                 name={'home'}
                 size={25}
-                color={focused ? '#1687A7' : 'gray'}
+                color={focused ? '#6b43be' : 'gray'}
               />
             )
           }}
@@ -51,7 +51,7 @@ export default function Tabs() : React.JSX.Element {
               <FontAwesome6
                 name={'money-bill-transfer'}
                 size={25}
-                color={focused ? '#1687A7' : 'gray'}
+                color={focused ? '#6b43be' : 'gray'}
               />
             )
           }}
@@ -66,7 +66,7 @@ export default function Tabs() : React.JSX.Element {
               <MaterialIcons
                 name={'account-balance-wallet'}
                 size={25}
-                color={focused ? '#1687A7' : 'gray'}
+                color={focused ? '#6b43be' : 'gray'}
               />
             )
           }}

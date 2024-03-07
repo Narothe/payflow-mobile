@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import "core-js/stable/atob";
 export const storeData = async (key: string, value: string) => {
   try {
     await AsyncStorage.setItem(key, value);
@@ -8,11 +8,15 @@ export const storeData = async (key: string, value: string) => {
   }
 };
 
-export const getData = async (key: string) => {
+export const getData = async (key: string): Promise<string | null> => {
   try {
     const value: string | null = await AsyncStorage.getItem(key);
     if (value !== null) {
+      console.log('Token przed dekodowaniem:', value);
       return value;
+    } else {
+      console.log(`No data found for key: ${key}`);
+      return null;
     }
   } catch (e) {
     console.log(e);

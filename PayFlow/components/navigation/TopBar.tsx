@@ -12,7 +12,6 @@ import { StackNavigator } from "../../types/types.ts";
 const TopBar = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackNavigator>>();
 
-
   return(
     <View className="flex justify-between flex-row p-3 bg-secondary">
       <View className="flex w-2/6 h-7">
@@ -28,4 +27,4 @@ const TopBar = () => {
     </View>
   )
 }
-export default TopBar
+export default TopBar;
