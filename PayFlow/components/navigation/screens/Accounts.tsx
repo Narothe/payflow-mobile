@@ -9,22 +9,23 @@ export default function Accounts(): React.JSX.Element {
   const [accounts, setAccounts] = useState([])
   const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    fetchData();
+  useEffect((): void => {
+   getAccounts();
   }, []);
-  async function fetchData(): Promise<void> {
-    try {
-      const user = await getDataFromToken();
-      const response = await getUserAccounts(user);
-      setAccounts(response.data)
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const getAccounts = async ()  => {
+    getUserAccounts().then(res => {
+      if(res != null) {
+        setAccounts(res.data);
+      }
+    })
+      .catch(err =>{
+        console.log("Error: ",err)
+      })
   }
 
   const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
-    await fetchData();
+    await getAccounts();
     setRefreshing(false);
   }, []);
 
