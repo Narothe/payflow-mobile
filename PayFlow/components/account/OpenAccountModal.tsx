@@ -27,25 +27,20 @@ export const OpenAccountModal: React.FC<OpenAccountModalProps> = ({ isOpen, onCl
   const [selectedType, setSelectedType] = useState<string>(defaultAccountType);
   const [selectedCurrency, setSelectedCurrency] = useState<string>(defaultCurrency);
 
-  const handleOpenAccount = async () => {
-    try {
-      const user: JwtHeader = await getDataFromToken();
-      const data = {
+  const handleOpenAccount = async ():Promise<void> => {
+    await openNewAccount(
+      {
         currency: selectedCurrency,
         accountType: selectedType
       }
-      console.log(selectedType," ",selectedCurrency)
-      await openNewAccount(user,data)
-      onClose();
-    } catch (error) {
-      console.error("Error sending data:", error);
-    }
+    )
+    onClose();
   };
-  const handleCurrencySelect = (value: string ) => {
+  const handleCurrencySelect = (value: string ): void => {
     setSelectedCurrency(value);
   };
 
-  const handleAccountTypeSelect = (value: string) => {
+  const handleAccountTypeSelect = (value: string): void => {
     setSelectedType(value);
   };
   return (
