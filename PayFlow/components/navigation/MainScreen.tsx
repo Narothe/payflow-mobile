@@ -1,12 +1,11 @@
 /* eslint-disable */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import Payments from "./screens/ Payments.tsx";
 import Home from "./screens/Home.tsx";
 import Accounts from "./screens/Accounts.tsx";
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { CustomTabLabel } from "./CustomTabLabel.tsx";
 import React from "react";
@@ -33,9 +32,9 @@ export default function Tabs() : React.JSX.Element {
             tabBarLabel: ({ focused }) =>
               <CustomTabLabel label="Home" focused={focused}/>,
             tabBarIcon: ({ focused }) => (
-              <Ionicons
+              <MaterialCommunityIcons
                 name={'home'}
-                size={25}
+                size={30}
                 color={focused ? '#6b43be' : 'gray'}
               />
             )

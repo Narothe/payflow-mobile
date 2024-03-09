@@ -2,6 +2,7 @@ import {getData} from '../storage/storage.ts';
 
 import { jwtDecode, JwtHeader } from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { User } from "../types/types.ts";
 
 export const TOKEN_KEY = 'token-payflow';
 export const getToken = (): string | null => {
@@ -36,10 +37,21 @@ export const getToken = (): string | null => {
 // };
 // const user = jwtDecode(getToken());
 // export const user = getData(TOKEN_KEY) && jwtDecode(getData(TOKEN_KEY));
-export const getDataFromToken = async () => {
+export const getDataFromToken = async ():Promise<User> => {
   const token: string | undefined = await getData(TOKEN_KEY);
   if(token != undefined)
     console.log(jwtDecode(token));
     return jwtDecode(token);
 };
-
+export const config = async (): Promise<{ headers: { Authorization: string } }> => {
+  const token: string | null = await AsyncStorage.getItem(TOKEN_KEY);
+  if (token) {
+    return {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    };
+  } else {
+    throw new Error("Error with token");
+  }
+};

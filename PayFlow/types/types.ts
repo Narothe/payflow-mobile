@@ -68,3 +68,8 @@ export type StackNavigator = {
   ContactUs: undefined;
   AccountDetails: undefined;
 };
+export type User = {
+  userId: number;
+  // login: string;
+  // name: string;
+}
