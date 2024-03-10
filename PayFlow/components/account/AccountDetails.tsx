@@ -8,6 +8,7 @@ import BalanceLabel from "../common/BalanceLabel.tsx";
 import { getAccountDetails } from "../../api/services/Account.ts";
 import { StackNavigator } from "../../types/types.ts";
 import { formatAccountNumber } from "../../utils/formatAccountNumber.ts";
+import { SmallCard } from "../card/SmallCard.tsx";
 export const AccountDetails = () => {
   const [balance, setBalance] = useState(0)
   const [currency, setCurrency] = useState('')
@@ -45,6 +46,7 @@ export const AccountDetails = () => {
         <TextLabel label={"Type"} text={type}/>
         <TextLabel label={"Number"} text={formatAccountNumber(accountNumber)}/>
         <TextLabel label={"Currency"} text={currency}/>
+        <SmallCard/>
       </View>
     </View>
   );
