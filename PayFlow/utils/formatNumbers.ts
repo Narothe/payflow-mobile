@@ -1,5 +1,5 @@
 /* eslint-disable */
-export function formatNumbers(accountNumber: string): string {
+export function formatCardNumber(accountNumber: string): string {
   if (!accountNumber) {
     return '';
   }
@@ -25,4 +25,14 @@ export function truncateNumber(accountNumber: string): string {
   const lastFourDigits: string = accountString.substring(accountString.length - 4);
 
   return `${firstFourDigits}...${lastFourDigits}`;
+}
+// export const formatExpirationDate = (rawDate: Date) => {
+//   const dateObject: Date = new Date(rawDate);
+//   const options = {month: '2-digit', year: '2-digit'};
+//   return dateObject.toLocaleDateString('en-US', options);
+// };
+export function formatExpirationDate(dateString: string): string {
+  const [year, month, day] = dateString.split('-');
+  const lastTwoDigitsOfYear = year.slice(-2);
+  return `${month}/${lastTwoDigitsOfYear}`;
 }
