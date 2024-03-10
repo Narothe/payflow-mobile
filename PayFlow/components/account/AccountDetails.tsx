@@ -1,18 +1,20 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import TextLabel from "../common/TextLabel.tsx";
 import BalanceLabel from "../common/BalanceLabel.tsx";
 import { getAccountDetails } from "../../api/services/Account.ts";
-import { StackNavigator } from "../../types/types.ts";
+import { StackNavigator, User } from "../../types/types.ts";
 import { formatAccountNumber } from "../../utils/formatAccountNumber.ts";
 import { SmallCard } from "../card/SmallCard.tsx";
+import { getDataFromToken } from "../../config/authconfig.ts";
 export const AccountDetails = () => {
   const [balance, setBalance] = useState(0)
   const [currency, setCurrency] = useState('')
   const [type, setType] = useState('')
+  const [owner, setOwner] = useState('')
   const [accountNumber, setNumber] = useState('')
   const navigation = useNavigation();
   type AccountDetailsRouteProp = RouteProp<StackNavigator, 'AccountDetails'>;
@@ -20,19 +22,27 @@ export const AccountDetails = () => {
   const route = useRoute<AccountDetailsRouteProp>();
   const { id } = route.params;
 
-  useEffect((): void => {
-    getAccountDetails(id).then(res => {
-      if(res) {
-        setType(res.data.accountNumberType);
-        setBalance(res.data.balance);
-        setCurrency(res.data.currency);
-        setNumber(res.data.number);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const user: User = await getDataFromToken();
+        setOwner(user.name)
+        const res = await getAccountDetails(id);
+        if (res) {
+          setType(res.data.accountNumberType);
+          setBalance(res.data.balance);
+          setCurrency(res.data.currency);
+          setNumber(res.data.number);
+        }
+      } catch (error) {
+        console.error("Error fetching account details:", error);
       }
-    })
+    })();
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <View className="flex-row bg-secondary h-auto p-3 items-center">
         <AntDesign name="arrowleft" size={25} color="black" onPress={navigation.goBack}/>
         <View className="w-full items-center">
@@ -40,14 +50,22 @@ export const AccountDetails = () => {
         </View>
       </View>
       <View className="items-center">
-        <View className="w-11/12 border-b-2 border-quaternary">
+        <View className="w-11/12 border-b-2 border-quaternary mb-2">
           <BalanceLabel balance={balance} currency={currency}/>
         </View>
-        <TextLabel label={"Type"} text={type}/>
-        <TextLabel label={"Number"} text={formatAccountNumber(accountNumber)}/>
-        <TextLabel label={"Currency"} text={currency}/>
+      </View>
+      <View className={'ml-6'}>
+        <Text className={'text-quinary mb-2'}>Account cards</Text>
         <SmallCard/>
       </View>
-    </View>
+      <View className="items-center">
+        <View className="w-11/12 border-b-2 border-quaternary mt-3"/>
+        <TextLabel label={"Type"} text={type}/>
+        <TextLabel label={"Number"} text={formatAccountNumber(accountNumber)}/>
+        <TextLabel label={"Iban Number"} text={'PL '+formatAccountNumber(accountNumber)}/>
+        <TextLabel label={"Account Owner"} text={owner}/>
+        <TextLabel label={"Currency"} text={currency}/>
+      </View>
+    </ScrollView>
   );
 };

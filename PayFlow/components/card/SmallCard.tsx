@@ -5,11 +5,11 @@ import LogoImg from '../../assets/logo/payflow.png';
 
 export const SmallCard = () => {
   return (
-    <View className="w-5/12 h-full ">
+    <View className="w-5/12 h-auto ">
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        colors={['#899091', '#1ab9ef']}
+        colors={['#899091', '#49c4f5']}
         className="rounded-xl h-20 p-2 justify-between"
       >
         <Image source={LogoImg} className="w-3/5 h-6"/>

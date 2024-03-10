@@ -70,6 +70,6 @@ export type StackNavigator = {
 };
 export type User = {
   userId: number;
-  // login: string;
-  // name: string;
+  login: string;
+  name: string;
 }
