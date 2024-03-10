@@ -8,9 +8,11 @@ interface TextWithLabelProps {
 
 const TextWithLabel: React.FC<TextWithLabelProps> = ({ label, text }) => {
   return (
-    <View className="w-5/6 p-3 border-b-2 border-quaternary">
-      <Text className="text-sm text-gray-800">{label}</Text>
-      <Text className="text-xl text-quinary">{text}</Text>
+    <View className="w-5/6 p-2 ">
+      <Text className="text-xs text-gray-800">{label}</Text>
+      <Text className="text-base text-quinary">
+        {text}
+      </Text>
     </View>
   );
 };

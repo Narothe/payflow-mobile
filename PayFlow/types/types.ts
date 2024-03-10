@@ -66,7 +66,7 @@ export type StackNavigator = {
   CorrespondenceAddress: undefined;
   AboutUs: undefined;
   ContactUs: undefined;
-  AccountDetails: undefined;
+  AccountDetails: { id: number };
 };
 export type User = {
   userId: number;

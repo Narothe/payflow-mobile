@@ -23,22 +23,15 @@ export const openNewAccount = async (data: NewAccountData):Promise<void> => {
   try {
     const user: User = await getDataFromToken();
     const id: number = user.userId;
-    await axios.post(`${BASE_URL}/api/v1/users/${id}/number`,data)
+    await axios.post(`${BASE_URL}/api/v1/users/${id}/number`,data,await config())
   } catch (err) {
     console.error("Error sending data: ", err);
   }
 }
-const handleOpenAccount = async () => {
+export const getAccountDetails = async (id:number)=> {
   try {
-    const user: JwtHeader = await getDataFromToken();
-    const data = {
-      currency: selectedCurrency,
-      accountType: selectedType
-    }
-    console.log(selectedType," ",selectedCurrency)
-    await openNewAccount(user,data)
-    onClose();
-  } catch (error) {
-    console.error("Error sending data:", error);
+    return await axios.get(`${BASE_URL}/api/v1/numbers/${id}`,await config())
+  } catch (err) {
+    console.error("Error fetching account details:", err);
   }
-};
+}

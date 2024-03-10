@@ -16,7 +16,7 @@ interface AccountTileProps {
 export const AccountTile: React.FC<AccountTileProps> = ({ account}) => {
   const navigation = useNavigation<NativeStackNavigationProp<StackNavigator>>();
   const handlePress = () => {
-    navigation.navigate('AccountDetails');
+    navigation.navigate('AccountDetails', {id: account.id});
   };
 
   return (
