@@ -2,8 +2,11 @@
 import { Image, Text, View } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import LogoImg from '../../assets/logo/payflow.png';
-
-export const SmallCard = () => {
+import React from "react";
+interface cardProps {
+  cardNumber: string;
+}
+export const SmallCard: React.FC<cardProps> = ({ cardNumber }) => {
   return (
     <View className="w-5/12 h-auto ">
       <LinearGradient
@@ -14,7 +17,7 @@ export const SmallCard = () => {
       >
         <Image source={LogoImg} className="w-3/5 h-6"/>
         <View className="items-center">
-          <Text className="text-white">1234...2324</Text>
+          <Text className="text-white">{cardNumber}</Text>
         </View>
       </LinearGradient>
     </View>

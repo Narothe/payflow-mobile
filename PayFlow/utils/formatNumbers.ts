@@ -1,5 +1,5 @@
 /* eslint-disable */
-export function formatAccountNumber(accountNumber: string): string {
+export function formatNumbers(accountNumber: string): string {
   if (!accountNumber) {
     return '';
   }
@@ -15,7 +15,7 @@ export function formatAccountNumber(accountNumber: string): string {
 
   return `${firstTwoDigits} ${chunks.join(' ')}`;
 }
-export function truncateAccountNumber(accountNumber: string): string {
+export function truncateNumber(accountNumber: string): string {
   if (!accountNumber) {
     return '';
   }

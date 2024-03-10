@@ -3,16 +3,14 @@ import React, { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { AccountInterface } from "../common/types.ts";
 import Entypo from 'react-native-vector-icons/Entypo';
-import { truncateAccountNumber } from "../../utils/formatAccountNumber.ts";
+import { truncateNumber } from "../../utils/formatNumbers.ts";
 import navigation from "../../router/Navigation.tsx";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { StackNavigator } from "../../types/types.ts";
 interface AccountTileProps {
   account: AccountInterface;
-  // onPress: (accountId: string) => void;
 }
-
 export const AccountTile: React.FC<AccountTileProps> = ({ account}) => {
   const navigation = useNavigation<NativeStackNavigationProp<StackNavigator>>();
   const handlePress = () => {
@@ -31,7 +29,7 @@ export const AccountTile: React.FC<AccountTileProps> = ({ account}) => {
               <Text className="font-bold text-lg text-quaternary">{account.currency}</Text>
               <Text className="text-xl font-bold text-black">{account.balance.toFixed(2)}</Text>
             </View>
-            <Text className="text-sm ml-2 text-quinary">{truncateAccountNumber(account.number)}</Text>
+            <Text className="text-sm ml-2 text-quinary">{truncateNumber(account.number)}</Text>
           </View>
         </View>
       </View>
