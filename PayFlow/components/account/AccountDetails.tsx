@@ -47,30 +47,32 @@ export const AccountDetails = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <View className={'flex-1'}>
       <View className="flex-row bg-secondary h-auto p-3 items-center">
         <AntDesign name="arrowleft" size={25} color="black" onPress={navigation.goBack}/>
         <View className="w-full items-center">
           <Text className="font-bold text-xl text-quaternary mr-10">Account Details</Text>
         </View>
       </View>
-      <View className="items-center">
-        <View className="w-11/12 border-b-2 border-quaternary mb-2">
-          <BalanceLabel balance={balance} currency={currency}/>
+      <ScrollView>
+        <View className="items-center">
+          <View className="w-11/12 border-b-2 border-quaternary mb-2">
+            <BalanceLabel balance={balance} currency={currency}/>
+          </View>
+          <TextLabel label={"Type"} text={type}/>
+          <TextLabel label={"Number"} text={formatCardNumber(accountNumber)}/>
+          <TextLabel label={"Iban Number"} text={'PL '+formatCardNumber(accountNumber)}/>
+          <TextLabel label={"Owner"} text={owner}/>
+          <TextLabel label={"Currency"} text={currency}/>
+          <View className="w-11/12 border-b-2 border-quaternary "/>
         </View>
-        <TextLabel label={"Type"} text={type}/>
-        <TextLabel label={"Number"} text={formatCardNumber(accountNumber)}/>
-        <TextLabel label={"Iban Number"} text={'PL '+formatCardNumber(accountNumber)}/>
-        <TextLabel label={"Owner"} text={owner}/>
-        <TextLabel label={"Currency"} text={currency}/>
-        <View className="w-11/12 border-b-2 border-quaternary "/>
-      </View>
-      <View className={'ml-6 mt-1'}>
-        <Text className={'text-quinary mb-1'}>Account card</Text>
-        {accountId && <Card accountId={accountId} />}
-      </View>
-      <View className="items-center">
-      </View>
-    </ScrollView>
+        <View className={'ml-6 mt-1'}>
+          <Text className={'text-quinary mb-1'}>Account card</Text>
+          {accountId && <Card accountId={accountId} />}
+        </View>
+          <View className="items-center">
+        </View>
+      </ScrollView>
+    </View>
   );
 };

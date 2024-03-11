@@ -38,7 +38,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
   }, []);
 
   return (
-    <View>
+    <View className={'mb-5'}>
       <CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={''} balance={balance}/>
     </View>
   );
