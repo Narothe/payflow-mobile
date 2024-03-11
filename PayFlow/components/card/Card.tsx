@@ -1,12 +1,13 @@
 /* eslint-disable */
 
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { CreditCard } from "./CreditCard.tsx";
 import { useEffect, useState } from "react";
 import { User } from "../../types/types.ts";
 import { getDataFromToken } from "../../config/authconfig.ts";
 import { getAccountDetails } from "../../api/services/Account.ts";
 import { getCardByAccountNumber } from "../../api/services/Card.ts";
+import { NewCard } from "./AddCardTile.tsx";
 
 interface cardProps {
   accountId: number;
@@ -17,7 +18,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
   const [cardNumber, setCardNumber] = useState('');
   const [owner, setOwner] = useState('');
   const [validDate, setValidDate] = useState('');
-
+  const [cardExist, setCardExist] = useState(false)
 
 
   useEffect((): void => {
@@ -30,16 +31,23 @@ const Card:React.FC<cardProps> = ({accountId}) => {
             setBalance(card.data.balance)
             setOwner(card.data.owner)
             setValidDate(card.data.validDate)
+            setCardExist(true);
           }
       } catch (error) {
-        console.error("Error fetching card details:", error);
+        console.log("Error fetching card details:", error);
       }
     })();
   }, []);
 
+  const h
+
   return (
-    <View className={'mb-5'}>
-      <CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={''} balance={balance}/>
+    <View className={'mb-5 w-5/6'}>
+      {cardExist ? (
+        <CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={''} balance={balance}/>
+      ) : (
+        <NewCard/>
+      )}
     </View>
   );
 }

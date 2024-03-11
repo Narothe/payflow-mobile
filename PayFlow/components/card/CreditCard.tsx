@@ -47,9 +47,9 @@ export const CreditCard: React.FC<cardProps> = ({ cardNumber, owner, currency, v
       },
     ],
   };
-  
+
   return (
-    <TouchableOpacity className={'w-11/12 h-auto'} onPress={handleFlip}>
+    <TouchableOpacity className={'w-full h-auto'} onPress={handleFlip}>
       <Animated.View  style={frontAnimatedStyle}>
         <LinearGradient
           start={{x: 0, y: 0}}
@@ -57,7 +57,6 @@ export const CreditCard: React.FC<cardProps> = ({ cardNumber, owner, currency, v
           colors={['#76dada', '#8f16f1']}
           className="rounded-xl h-40 p-2 "
         >
-
           <View className={'flex-row justify-between p-1'}>
             <Text className={'text-xl text-white'}>{currency}</Text>
             <Text className={'text-xl text-white'}>{balance.toFixed(2)}</Text>

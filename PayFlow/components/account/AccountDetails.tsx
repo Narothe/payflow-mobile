@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import Fontisto from "react-native-vector-icons/Fontisto";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import TextLabel from "../common/TextLabel.tsx";
 import BalanceLabel from "../common/BalanceLabel.tsx";
 import { getAccountDetails } from "../../api/services/Account.ts";
 import { StackNavigator, User } from "../../types/types.ts";
 import { formatCardNumber, truncateNumber } from "../../utils/formatNumbers.ts";
-import { CreditCard } from "../card/CreditCard.tsx";
 import { getDataFromToken } from "../../config/authconfig.ts";
 import { getCardByAccountNumber } from "../../api/services/Card.ts";
 import Card from "../card/Card.tsx";
@@ -66,11 +66,14 @@ export const AccountDetails = () => {
           <TextLabel label={"Currency"} text={currency}/>
           <View className="w-11/12 border-b-2 border-quaternary "/>
         </View>
-        <View className={'ml-6 mt-1'}>
-          <Text className={'text-quinary mb-1'}>Account card</Text>
-          {accountId && <Card accountId={accountId} />}
-        </View>
-          <View className="items-center">
+        <View className={'mt-1'}>
+          <View className={'flex-row items-center mb-2 ml-6'}>
+            <Fontisto name={'credit-card'} color={'#6b43be'} size={16}/>
+            <Text className={'text-quinary ml-1'}>Account card</Text>
+          </View>
+          <View className={'items-center'}>
+            {accountId && <Card accountId={accountId} />}
+          </View>
         </View>
       </ScrollView>
     </View>
