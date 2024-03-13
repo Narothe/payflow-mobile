@@ -14,7 +14,7 @@ export default function(): React.JSX.Element {
       <View className={' justify-around flex-row flex-wrap h-auto w-full bg-primary border-[2px] border-gray-200 py-2'}>
         <ServiceItem title={"normal"} logo={<Material name={'transfer'} size={30} color={"#fff"} />} nav={"Settings"} />
         <ServiceItem title={"by phone"} logo={<Material name={'cellphone-check'} size={30} color={"#fff"} />} nav={"Settings"} />
-        <ServiceItem title={"history"} logo={<Material name={'history'} size={30} color={"#fff"} />} nav={"Settings"} />
+        <ServiceItem title={"history"} logo={<Material name={'history'} size={30} color={"#fff"} />} nav={"History"} />
       </View>
       <Text className={'text-tertiary ml-3 my-2 font-medium'}>Others</Text>
       <View className={' justify-around flex-row flex-wrap w-full bg-primary border-[2px] border-gray-200 py-2'}>
@@ -23,7 +23,7 @@ export default function(): React.JSX.Element {
         <ServiceItem title={"cantor"} logo={<MaterialIcons name={'currency-exchange'} size={30} color={"#fff"} />} nav={"Settings"} />
         <ServiceItem title={"graphs"} logo={<Entypo name={'bar-graph'} size={30} color={"#fff"} />} nav={"Settings"} />
         <ServiceItem title={"cards"} logo={<FontAwesome name={'credit-card'} size={30} color={"#fff"} />} nav={"Settings"} />
-        <ServiceItem title={"upgrade account"} logo={<MaterialIcons name={'upgrade'} size={30} color={"#fff"} />} nav={"Settings"} />
+        <ServiceItem title={"account"} logo={<MaterialIcons name={'upgrade'} size={30} color={"#fff"} />} nav={"Settings"} />
       </View>
     </View>
   );

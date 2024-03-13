@@ -66,10 +66,19 @@ export type StackNavigator = {
   CorrespondenceAddress: undefined;
   AboutUs: undefined;
   ContactUs: undefined;
-  AccountDetails: { id: number };
+  History: undefined;
+  AccountDetails: {id: number};
 };
 export type User = {
   userId: number;
   login: string;
   name: string;
-}
+};
+
+export type UserAccounts = {
+  id: number;
+  balance: number;
+  currency: string;
+  accountNumberType: string;
+  number: string;
+};

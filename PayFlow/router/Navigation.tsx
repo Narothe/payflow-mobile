@@ -17,6 +17,7 @@ import AddressData from "../components/settings/AddressData.tsx";
 import AboutUs from "../components/settings/AboutUs.tsx";
 import ContactUs from "../components/settings/ContactUs.tsx";
 import { AccountDetails } from "../components/account/AccountDetails.tsx";
+import History from "../components/navigation/screens/Services/History.tsx";
 
 
 
@@ -94,6 +95,11 @@ const Navigation = () => {
         <Stack.Screen
           name="AccountDetails"
           component={AccountDetails}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="History"
+          component={History}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
