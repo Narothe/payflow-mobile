@@ -11,7 +11,7 @@ export default function(): React.JSX.Element {
       <ScrollAccount />
       <QuickSwitch />
       <TouchableOpacity
-        className={'bg-quaternary p-3 rounded-full absolute bottom-5 right-5'}
+        className={'bg-quaternary p-3 rounded-full absolute bottom-5 right-5 z-10'}
       >
         <Text className={'text-primary font-semibold capitalize'}>new transfer▶</Text>
       </TouchableOpacity>
