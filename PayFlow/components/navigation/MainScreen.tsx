@@ -2,7 +2,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Payments from "./screens/ Payments.tsx";
-import Home from "./screens/Home.tsx";
+import Home from "./screens/Home/Home.tsx";
 import Accounts from "./screens/Accounts.tsx";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';

@@ -14,15 +14,16 @@ const TopBar = () => {
 
 
   return(
-    <View className="flex justify-between flex-row p-3 bg-secondary">
+    <View className="flex justify-between flex-row p-3 bg-secondary items-center">
       <View className="flex w-2/6 h-7">
         <Image source={Logo} className={"w-full h-full"} />
       </View>
       <View>
         <TouchableOpacity
+          className={'items-center'}
           onPress={() => navigation.navigate('Settings')}
         >
-          <Ionicons name={'settings'} size={30} color={"#000"} />
+          <Ionicons name={'settings-outline'} size={24} color={"#6b43be"} />
         </TouchableOpacity>
       </View>
     </View>
