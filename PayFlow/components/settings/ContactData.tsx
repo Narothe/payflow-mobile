@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Text, View } from "react-native";
-import GoBackTitle from '../common/GoBackTitle.tsx';
+import GoBack from '../common/GoBack.tsx';
 import React, {useState} from 'react';
 import InputContact from "./InputContact.tsx";
 import { changeEmail, changePhoneNumber } from "../../api/services/UserData.ts";
@@ -35,7 +35,7 @@ const ContactData = ({navigation, route}: any) => {
 
   return (
     <View>
-      <GoBackTitle title="contact data" />
+      <GoBack title="contact data" />
       <View className={'w-full items-center my-3 '}>
         <InputContact
           title={'e-mail'}

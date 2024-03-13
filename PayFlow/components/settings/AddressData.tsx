@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import GoBackTitle from "../common/GoBackTitle.tsx";
+import GoBack from "../common/GoBack.tsx";
 import InputContact from "./InputContact.tsx";
 import InputData from "./InputData.tsx";
 import { checkZipCode, isString } from "../../utils/validation.ts";
@@ -45,7 +45,7 @@ const AddressData= ({navigation, route}: any) => {
 
   return(
     <View>
-      <GoBackTitle title="home address" />
+      <GoBack title="home address" />
       <ScrollView className={'w-full '}>
         <View className={'w-11/12 bg-primary mx-4 my-5 rounded py-5  '}>
           <InputData

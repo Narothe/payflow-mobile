@@ -7,7 +7,7 @@ interface Props {
   title: string;
 }
 
-const GoBackTitle: React.FC<Props> = ({title}) => {
+const GoBack: React.FC<Props> = ({title}) => {
   const navigation = useNavigation();
   return (
     <View
@@ -25,4 +25,4 @@ const GoBackTitle: React.FC<Props> = ({title}) => {
     </View>
   );
 };
-export default GoBackTitle;
+export default GoBack;

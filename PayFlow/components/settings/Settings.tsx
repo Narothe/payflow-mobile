@@ -7,7 +7,7 @@ import IoniconsInfo from  'react-native-vector-icons/Ionicons';
 import Material from  'react-native-vector-icons/MaterialIcons';
 import React, { useEffect, useState } from "react";
 import SettingsItem from "./SettingsItem.tsx";
-import GoBackTitle from "../common/GoBackTitle.tsx";
+import GoBack from "../common/GoBack.tsx";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { getData } from "../../storage/storage.ts";
 import { getUserData } from "../../api/services/UserData.ts";
@@ -42,7 +42,7 @@ const Settings = () => {
 
   return (
     <View className={'w-full bg-gray-200 h-full'}>
-      <GoBackTitle title='settings' />
+      <GoBack title='settings' />
       <View className={''}>
         <Text className={'ml-5 my-2 capitalize font-medium'}>About me</Text>
         <SettingsItem

@@ -1,5 +1,5 @@
 import {Image, Linking, Text, TouchableOpacity, View} from 'react-native';
-import GoBackTitle from '../common/GoBackTitle.tsx';
+import GoBack from '../common/GoBack.tsx';
 import Logo from '../common/Logo.tsx';
 import React from 'react';
 // @ts-ignore
@@ -22,7 +22,7 @@ const ContactUs = () => {
   ];
   return (
     <View className={'h-full bg-secondary'}>
-      <GoBackTitle title={'about us'} />
+      <GoBack title={'about us'} />
       <View
         className={
           'h-5/6 py-5 mx-0 px-2 items-center bg-secondary justify-between '

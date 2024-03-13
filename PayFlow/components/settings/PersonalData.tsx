@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Text, TouchableOpacity, View } from "react-native";
-import GoBackTitle from "../common/GoBackTitle.tsx";
+import GoBack from "../common/GoBack.tsx";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../common/Input.tsx";
@@ -11,7 +11,7 @@ const PersonalData = ( {navigation, route}: any) => {
 
   return(
     <View className={'bg-secondary h-full'}>
-      <GoBackTitle title='personal data' />
+      <GoBack title='personal data' />
       <View className={'items-center my-10 flex-col justify-center  '}>
         <View className={'items-center my-4'}>
           <View className={'bg-quaternary w-20 h-20 justify-center items-center rounded-full my-3'}>

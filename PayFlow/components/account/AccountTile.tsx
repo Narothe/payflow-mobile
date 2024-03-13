@@ -18,7 +18,7 @@ export const AccountTile: React.FC<AccountTileProps> = ({ account}) => {
   };
 
   return (
-    <TouchableOpacity className="w-11/12 h-auto" onPress={handlePress}>
+    <TouchableOpacity className="w-[350px] h-24 mx-3" onPress={handlePress}>
       <View className="flex p-4 bg-primary mt-2 rounded-2xl">
         <View className="flex-row">
           <View className="h-full">
