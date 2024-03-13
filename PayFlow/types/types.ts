@@ -75,10 +75,23 @@ export type User = {
   name: string;
 };
 
-export type UserAccounts = {
+export type UserAccount = {
   id: number;
   balance: number;
   currency: string;
   accountNumberType: string;
   number: string;
+};
+
+export type UserTransfer = {
+  id: number;
+  date: string;
+  amount: string;
+  currency: string;
+  description: string;
+  senderAccountId: number;
+  senderFullName: string;
+  receiverAccountId: number;
+  receiverFullName: string;
+  isUserSender: boolean;
 };

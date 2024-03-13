@@ -8,7 +8,7 @@ import { StackNavigator } from "../../../../types/types.ts";
 type Props = {
   title: string,
   logo: Element,
-  nav: string,
+  nav: StackNavigator,
   hasBg?: boolean
 }
 

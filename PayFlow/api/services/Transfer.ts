@@ -1,0 +1,17 @@
+import {User} from '../../types/types.ts';
+import {config, getDataFromToken} from '../../config/authconfig.ts';
+import axios from 'axios';
+import {BASE_URL} from '../axios.ts';
+
+export const getUserTransfers = async () => {
+  try {
+    const user: User = await getDataFromToken();
+    const id: number = user.userId;
+    return axios.get(
+      `${BASE_URL}/api/v1/users/${id}/transfers`,
+      await config(),
+    );
+  } catch (err) {
+    console.error('Error fetching accounts:', err);
+  }
+};
