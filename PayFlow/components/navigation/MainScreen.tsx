@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Payments from "./screens/ Payments.tsx";
-import Home from "./screens/Home.tsx";
+import Home from "./screens/Home/Home.tsx";
 import Accounts from "./screens/Accounts.tsx";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
