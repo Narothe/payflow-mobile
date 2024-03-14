@@ -14,6 +14,6 @@ export const createCard = async (id: number) => {
   try {
     return axios.post(`${BASE_URL}/api/v1/numbers/${id}/card`, config());
   } catch (err) {
-    console.error('Error creating card')
+    console.error('Error creating card', err);
   }
 }
