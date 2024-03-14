@@ -1,15 +1,23 @@
 import { Button, Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { DropDown } from "../common/DropDown.tsx";
-import React from "react";
+import React, { useState } from "react";
 import Input from "../common/Input.tsx";
+import { activateCard } from "../../api/services/Card.ts";
 
-interface ActivateCardModalrops {
+interface ActivateCardModalProps {
   isOpen: boolean;
   onClose: () => void;
+  cardId: number;
 }
 
-const ActivateCardModal:  React.FC<ActivateCardModalrops> = ({ isOpen, onClose }) => {
+const ActivateCardModal:  React.FC<ActivateCardModalProps> = ({ isOpen, onClose , cardId}) => {
+  const [pin, setPin] = useState('');
+  const handleActivateCard = async (): Promise<void> => {
+    await activateCard(cardId, pin);
+    onClose();
+  }
+
   return (
     <Modal
       visible={isOpen}
@@ -23,13 +31,17 @@ const ActivateCardModal:  React.FC<ActivateCardModalrops> = ({ isOpen, onClose }
               <AntDesign name="close" size={25} color="#6b43be" />
             </TouchableOpacity>
           </View>
-          <TextInput placeholder={'Enter pin'} className={"w-full h-10 bg-gray-300 rounded-2xl px-3 my-2"} />
+          <TextInput
+            placeholder={'Enter pin'}
+            onChangeText={setPin}
+            className={"w-full h-10 bg-gray-300 rounded-2xl px-3 my-2"}
+          />
           <View className={'items-center'}>
           <TouchableOpacity
-            // onPress={() => handleOpenAccount() }
+              onPress={() => handleActivateCard()}
             className={'w-3/5 py-3 px-6 my-2 rounded bg-quaternary  items-center'}
           >
-            <Text className={'text-white font-medium'}>Open Account </Text>
+            <Text className={'text-white font-medium'}>Activate</Text>
           </TouchableOpacity>
           </View>
         </View>

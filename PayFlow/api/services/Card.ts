@@ -14,6 +14,13 @@ export const createCard = async (id: number) => {
   try {
     return axios.post(`${BASE_URL}/api/v1/numbers/${id}/card`, config());
   } catch (err) {
-    console.error('Error creating card', err);
+    console.error('Error creating card:', err);
+  }
+}
+export const activateCard = async (id: number, pin: string) => {
+  try {
+    return axios.patch(`${BASE_URL}/api/v1/cards/${id}/activate`, {pin: pin}, await config());
+  } catch (err) {
+    console.error('Error activation card:', err);
   }
 }

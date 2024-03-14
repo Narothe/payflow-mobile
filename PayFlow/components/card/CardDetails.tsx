@@ -21,10 +21,21 @@ const CardDetails:React.FC<CardDetailsProps> = ({cardData}) => {
       {isActive ? (
         <Text>Aktywna</Text>
       ) : (
-        <><CardDetailsButton onPress={() => setIsModalOpen(true)} title={"Activate"}
-                             logo={<MaterialCommunityIcons name={"credit-card-check-outline"} size={20}
-                                                           color={"white"} />} /><ActivateCardModal isOpen={isModalOpen}
-                                                                                                    onClose={() => setIsModalOpen(false)} /></>
+        <View>
+          <CardDetailsButton onPress={() => setIsModalOpen(true)} title={"Activate"}
+            logo={
+              <MaterialCommunityIcons
+                name={'credit-card-check-outline'}
+                size={20}
+                color={'white'}
+              />
+            }
+          />
+          <ActivateCardModal
+            cardId={cardData.id}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)} />
+        </View>
       )}
     </View>
   );
