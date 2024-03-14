@@ -53,3 +53,12 @@ export function formatAccountNumber(accountNumber: string | undefined) {
 
   return `${firstTwoDigits} ${chunks.join(' ')}`;
 }
+
+export function formatBlikNumber(number: string | undefined) {
+  if (!number) {
+    return '';
+  }
+  const firstDigits = number.substring(0, 3);
+  const remainingDigits = number.substring(3);
+  return `${firstDigits} ${remainingDigits}`;
+}
