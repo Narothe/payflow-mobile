@@ -10,11 +10,14 @@ import { createCard, getCardByAccountNumber } from "../../api/services/Card.ts";
 import { NewCard } from "./AddCardTile.tsx";
 import { CardDetailsButton } from "./CardDetailsButton.tsx";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import CardDetails from "./CardDetails.tsx";
+import { CardData } from "../common/types.ts";
 
 interface cardProps {
   accountId: number;
 }
 const Card:React.FC<cardProps> = ({accountId}) => {
+  const [cardData, setCardData] = useState<CardData>();
   const [currency, setCurrency] = useState('');
   const [balance, setBalance] = useState(0);
   const [cardNumber, setCardNumber] = useState('');
@@ -28,6 +31,8 @@ const Card:React.FC<cardProps> = ({accountId}) => {
       try {
           const card = await getCardByAccountNumber(accountId)
           if(card) {
+            setCardData(card.data);
+            console.log(card.data)
             setCardExist(true);
             setCurrency(card.data.currency)
             setCardNumber(card.data.cardNumber)
@@ -50,7 +55,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
     <View className={'mb-5 w-5/6'}>
       {cardExist ? (
         <><CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={""}
-                      balance={balance} /><CardDetailsButton title={"Activate"} logo={<MaterialCommunityIcons name={"credit-card-check-outline"} size={20} color={"white"}/> } /></>
+                      balance={balance} /><CardDetails cardData={cardData!} /></>
       ) : (
         <NewCard onPress={handleAddCard}/>
       )}
