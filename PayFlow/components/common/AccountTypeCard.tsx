@@ -44,7 +44,7 @@ const AccountTypeCard: React.FC<PropsType> = ({
         </Text>
       </View>
       <View className={'mt-2 flex-row justify-between'}>
-        <View className={'flex-row'}>
+        <View className={'flex-row mt-2'}>
           <Text className={'text-quaternary font-medium'}>{'Type: '}</Text>
           <Text className={'text-quinary font-medium'}>
             {props.accountNumberType}

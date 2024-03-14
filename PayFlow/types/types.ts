@@ -1,4 +1,5 @@
 import {Control} from 'react-hook-form';
+import PhoneTransfer from '../components/navigation/screens/Services/PhoneTransfer.tsx';
 
 export interface InputInterface {
   control: Control;
@@ -68,6 +69,7 @@ export type StackNavigator = {
   ContactUs: undefined;
   History: undefined;
   Blik: undefined;
+  PhoneTransfer: undefined;
   UpgradeAccount: undefined;
   AccountDetails: {id: number};
   Transaction: {id: number};
@@ -127,3 +129,10 @@ export enum AccountType {
   STANDARD = 'STANDARD',
   INTENSIVE = 'INTENSIVE',
 }
+
+export type TransferByPhone = {
+  phoneNumber: string;
+  amount: string;
+  description: string;
+  senderId: number;
+};

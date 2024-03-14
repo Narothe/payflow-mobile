@@ -11,13 +11,14 @@ import Blik from "../../../common/Blik.tsx";
 import History from "./History.tsx";
 import Settings from "../../../settings/Settings.tsx";
 import UpgradeAccount from "./UpgradeAccount.tsx";
+import PhoneTransfer from "./PhoneTransfer.tsx";
 export default function(): React.JSX.Element {
   return (
     <View className="flex-1 ">
       <Text className={'text-tertiary ml-3 my-2 font-medium'}>Transfers</Text>
       <View className={' justify-around flex-row flex-wrap h-auto w-full bg-primary border-[2px] border-gray-200 py-2'}>
         <ServiceItem title={"normal"} logo={<Material name={'transfer'} size={30} color={"#fff"} />} nav={Settings} />
-        <ServiceItem title={"by phone"} logo={<Material name={'cellphone-check'} size={30} color={"#fff"} />} nav={Settings} />
+        <ServiceItem title={"by phone"} logo={<Material name={'cellphone-check'} size={30} color={"#fff"} />} nav={PhoneTransfer} />
         <ServiceItem title={"history"} logo={<Material name={'history'} size={30} color={"#fff"} />} nav={History} />
       </View>
       <Text className={'text-tertiary ml-3 my-2 font-medium'}>Others</Text>
