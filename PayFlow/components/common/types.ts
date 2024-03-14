@@ -50,3 +50,8 @@ export interface AccountInterface {
   balance: number;
   type: AccountNumberType;
 }
+export interface CardData {
+  id: number;
+  active: boolean;
+  blocked: boolean;
+}
