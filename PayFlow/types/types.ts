@@ -68,6 +68,7 @@ export type StackNavigator = {
   ContactUs: undefined;
   History: undefined;
   AccountDetails: {id: number};
+  Transaction: {id: number};
 };
 export type User = {
   userId: number;
@@ -94,4 +95,28 @@ export type UserTransfer = {
   receiverAccountId: number;
   receiverFullName: string;
   isUserSender: boolean;
+};
+
+export type ShortAddress = {
+  country: string;
+  zipCode: string;
+  city: string;
+};
+
+export type TransferAccount = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  accountNumber: string;
+  address: ShortAddress;
+};
+
+export type Transfer = {
+  id: number;
+  date: string;
+  amount: string;
+  currency: string;
+  description: string;
+  sender: TransferAccount;
+  receiver: TransferAccount;
 };

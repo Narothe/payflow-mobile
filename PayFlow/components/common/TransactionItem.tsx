@@ -1,16 +1,22 @@
 /* eslint-disable */
 
 import { Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect } from "react";
-import { User, UserTransfer} from "../../types/types.ts";
+import React, { useState } from "react";
+import { StackNavigator, UserTransfer } from "../../types/types.ts";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import Transaction from "./Transaction.tsx";
 
 
 
 const TransactionItem:React.FC<UserTransfer> = (props: UserTransfer) => {
-  console.log(props.isUserSender)
+  const navigation = useNavigation<NativeStackNavigationProp<StackNavigator>>();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return(
     <TouchableOpacity
       className={'flex-row  h-10 border-[1px] border-quaternary rounded-full items-center mx-2 my-1 bg-primary'}
+      // onPress={() => navigation.navigate('Transaction',  {id: props.id})}
+      onPress={() => setIsModalOpen(true)}
     >
         <View className={'bg-quaternary h-10 w-10 rounded-full justify-center items-center'}>
           <Text className={' text-3xl text-quinary'}>{props.isUserSender ? '-' : '+'}</Text>
@@ -29,6 +35,7 @@ const TransactionItem:React.FC<UserTransfer> = (props: UserTransfer) => {
             <Text className={' text-base text-quinary'}>{props.date}</Text>
           </View>
         </View>
+      <Transaction transferId={props.id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </TouchableOpacity>
   )
 }

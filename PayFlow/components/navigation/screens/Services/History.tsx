@@ -9,16 +9,16 @@ import SelectAccount from "../../../common/SelectAccount.tsx";
 import { Currency } from "../../../common/types.ts";
 import TransactionItem from "../../../common/TransactionItem.tsx";
 import { getUserTransfers } from "../../../../api/services/Transfer.ts";
-import { getDataFromToken } from "../../../../config/authconfig.ts";
+
 
 
 const History = () => {
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
-  const [showPLN, setShowPLN] = useState<boolean>(false);
-  const [showUSD, setShowUSD] = useState<boolean>(false);
-  const [showEUR, setShowEUR] = useState<boolean>(false);
+  const [showPLN, setShowPLN] = useState<boolean>(true);
+  const [showUSD, setShowUSD] = useState<boolean>(true);
+  const [showEUR, setShowEUR] = useState<boolean>(true);
   const [transfers, setTransfers] = useState<UserTransfer[]>([]);
-  const [userId, setUserId] = useState<number>(0);
+
 
   useEffect((): void => {
 
@@ -38,7 +38,6 @@ const History = () => {
       getUserTransfers()
         .then(res => {
           if(res != null) {
-            console.log(res.data)
             setTransfers(res.data);
           }
         })
@@ -101,10 +100,20 @@ const History = () => {
             setCurrency={setCurrency}
           />
         ))}
+        <SelectAccount
+          title={"Other"}
+          checked
+        />
       </View>
       <View>
         {transfers &&
-          transfers.map((a, index) => (
+          transfers
+            .filter((a) => {
+              return (showEUR && a.currency === Currency.EUR) ||
+                (showPLN && a.currency === Currency.PLN) ||
+                (showUSD && a.currency === Currency.USD);
+            })
+            .map((a, index) => (
               <TransactionItem
                 key={index}
                 id={a.id}

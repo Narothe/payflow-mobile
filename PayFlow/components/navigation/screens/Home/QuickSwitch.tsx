@@ -18,7 +18,7 @@ const QuickSwitch = () => {
         <ServiceSelect title={"blik"} logo={<Image source={blik}  className={'w-16 h-8'} />} nav={"Settings"}/>
         <ServiceSelect title={"transfer"} logo={<Material name={'cellphone-check'} size={30} color={"#000"} />} nav={"Settings"}/>
         <ServiceSelect title={"lastest"} logo={<Material name={'history'} size={30} color={"#000"} />} nav={"Settings"}/>
-        <ServiceSelect title={"currency exchange"} logo={<Material name={'currency-eur'} size={30} color={"#000"} />} nav={"Settings"}/>
+        <ServiceSelect title={"exchange"} logo={<Material name={'currency-eur'} size={30} color={"#000"} />} nav={"Settings"}/>
         <ServiceSelect title={"add account"} logo={<Material name={'plus'} size={30} color={"#000"} />} nav={"Settings"}/>
       </View>
     </View>

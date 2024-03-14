@@ -15,3 +15,11 @@ export const getUserTransfers = async () => {
     console.error('Error fetching accounts:', err);
   }
 };
+
+export const getTransferById = async (id: number) => {
+  try {
+    return axios.get(`${BASE_URL}/api/v1/transfers/${id}`, await config());
+  } catch (err) {
+    console.error('Error fetching accounts:', err);
+  }
+};
