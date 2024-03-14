@@ -67,6 +67,7 @@ export type StackNavigator = {
   AboutUs: undefined;
   ContactUs: undefined;
   History: undefined;
+  Blik: undefined;
   AccountDetails: {id: number};
   Transaction: {id: number};
 };

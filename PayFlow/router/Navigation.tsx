@@ -19,6 +19,7 @@ import ContactUs from "../components/settings/ContactUs.tsx";
 import { AccountDetails } from "../components/account/AccountDetails.tsx";
 import History from "../components/navigation/screens/Services/History.tsx";
 import Transaction from "../components/common/Transaction.tsx";
+import Blik from "../components/common/Blik.tsx";
 
 
 
@@ -101,6 +102,11 @@ const Navigation = () => {
         <Stack.Screen
           name="History"
           component={History}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Blik"
+          component={Blik}
           options={{headerShown: false}}
         />
         <Stack.Screen
