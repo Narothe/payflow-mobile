@@ -20,6 +20,7 @@ import { AccountDetails } from "../components/account/AccountDetails.tsx";
 import History from "../components/navigation/screens/Services/History.tsx";
 import Transaction from "../components/common/Transaction.tsx";
 import Blik from "../components/common/Blik.tsx";
+import UpgradeAccount from "../components/navigation/screens/Services/UpgradeAccount.tsx";
 
 
 
@@ -112,6 +113,11 @@ const Navigation = () => {
         <Stack.Screen
           name="Transaction"
           component={Transaction}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="UpgradeAccount"
+          component={UpgradeAccount}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

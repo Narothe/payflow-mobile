@@ -2,18 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
-import { getUserAccounts } from "../../api/services/Account.ts";
 import { getTransferById } from "../../api/services/Transfer.ts";
-import { StackNavigator, Transfer } from "../../types/types.ts";
-import GoBack from "./GoBack.tsx";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { Transfer } from "../../types/types.ts";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Logo from "./Logo.tsx";
 import LogoImg from "../../assets/logo/payflow.png";
 import { formatAccountNumber } from "../../utils/formatNumbers.ts";
 
-
-type TransactionRouteProp = RouteProp<StackNavigator, 'Transaction'>;
 interface OpenAccountModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -21,8 +15,7 @@ interface OpenAccountModalProps {
 }
 const Transaction:React.FC<OpenAccountModalProps> = ({ isOpen, onClose , transferId}) => {
   const [data, setData] = useState<Transfer>();
-  // const route = useRoute<TransactionRouteProp>();
-  // const { id } = route.params;
+
 
   useEffect((): void =>{
     const getTransaction = async ()  => {

@@ -68,6 +68,7 @@ export type StackNavigator = {
   ContactUs: undefined;
   History: undefined;
   Blik: undefined;
+  UpgradeAccount: undefined;
   AccountDetails: {id: number};
   Transaction: {id: number};
 };
@@ -121,3 +122,8 @@ export type Transfer = {
   sender: TransferAccount;
   receiver: TransferAccount;
 };
+
+export enum AccountType {
+  STANDARD = 'STANDARD',
+  INTENSIVE = 'INTENSIVE',
+}
