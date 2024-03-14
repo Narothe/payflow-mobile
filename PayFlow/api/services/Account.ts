@@ -35,3 +35,11 @@ export const getAccountDetails = async (id:number)=> {
     console.error("Error fetching account details:", err);
   }
 }
+
+export const changeAccountType = async (id: number, type: string) => {
+  try {
+    return axios.patch(`${BASE_URL}/api/v1/numbers/${id}/type?type=${type}`,await config())
+  } catch (err) {
+    console.error("Error fetching accounts:", err);
+  }
+}
