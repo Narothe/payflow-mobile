@@ -8,30 +8,28 @@ import { TransferByPhone, UserAccount } from "../../../../types/types.ts";
 import { SelectList } from "react-native-dropdown-select-list";
 import { checkAmount, checkPhoneNumber } from "../../../../utils/validation.ts";
 import { sendTransferByPhone } from "../../../../api/services/Transfer.ts";
-
-
-
+import SelectAccountList from "../../../common/SelectAccountList.tsx";
 
 const PhoneTransfer = () => {
-  const [accounts, setAccounts] = useState<UserAccount[]>([]);
   const [selected, setSelected]=useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [amount, setAmount] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [msg, setMsg] = useState<string>('')
+  const [accounts, setAccounts] = useState<UserAccount[]>([]);
 
   useEffect((): void => {
-    const getAccounts = async ()  => {
+    const getAccounts = async () => {
       getUserAccounts()
         .then(res => {
-          if(res != null) {
+          if (res != null) {
             setAccounts(res.data);
           }
         })
-        .catch(err =>{
-          console.log("Error: ",err)
-        })
-    }
+        .catch(err => {
+          console.log('Error: ', err);
+        });
+    };
     getAccounts();
   }, []);
 
@@ -74,33 +72,7 @@ const PhoneTransfer = () => {
     <View>
       <GoBack title={"Phone Transfer"} />
       <View className={'mx-3 bg-primary mt-5 p-5 rounded-xl'}>
-        <View className={'my-3 mx-4 '} >
-          <Text className={'text-quaternary font-semibold capitalize text-center mb-2'}>Select Account: </Text>
-          <SelectList
-            setSelected={(val: string) => setSelected(val)}
-            data={accounts.map((a) => a.currency + " " +a.number)}
-            save="value"
-            search={false}
-            inputStyles={{
-              fontSize: 14,
-              color: 'black',
-            }}
-            dropdownTextStyles={{
-              color: 'black'
-            }}
-            dropdownStyles={{
-              backgroundColor: "white",
-              position: "absolute",
-              top: 40,
-              width: "100%",
-              zIndex: 999,
-            }}
-            boxStyles={{
-              backgroundColor: 'rgb(229 231 235)',
-              borderWidth: 0
-          }}
-          />
-        </View>
+        <SelectAccountList setSelected={setSelected} accounts={accounts} />
         <View className={'items-center'}>
           <Text className={'text-quaternary font-semibold capitalize'}>Enter recipient's phone number:</Text>
           <TextInput

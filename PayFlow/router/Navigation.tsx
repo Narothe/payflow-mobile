@@ -22,6 +22,8 @@ import Transaction from "../components/common/Transaction.tsx";
 import Blik from "../components/common/Blik.tsx";
 import UpgradeAccount from "../components/navigation/screens/Services/UpgradeAccount.tsx";
 import PhoneTransfer from "../components/navigation/screens/Services/PhoneTransfer.tsx";
+import Credits from "../components/navigation/screens/Services/Credits.tsx";
+import AddCredits from "../components/common/AddCredit.tsx";
 
 
 
@@ -124,6 +126,16 @@ const Navigation = () => {
         <Stack.Screen
           name="PhoneTransfer"
           component={PhoneTransfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Credits"
+          component={Credits}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddCredits"
+          component={AddCredits}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

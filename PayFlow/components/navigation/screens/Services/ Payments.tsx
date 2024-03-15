@@ -12,6 +12,7 @@ import History from "./History.tsx";
 import Settings from "../../../settings/Settings.tsx";
 import UpgradeAccount from "./UpgradeAccount.tsx";
 import PhoneTransfer from "./PhoneTransfer.tsx";
+import Credits from "./Credits.tsx";
 export default function(): React.JSX.Element {
   return (
     <View className="flex-1 ">
@@ -24,7 +25,7 @@ export default function(): React.JSX.Element {
       <Text className={'text-tertiary ml-3 my-2 font-medium'}>Others</Text>
       <View className={' justify-around flex-row flex-wrap w-full bg-primary border-[2px] border-gray-200 py-2'}>
         <ServiceItem title={"blik"} logo={<Image source={blik}  className={'w-12 h-12'} />} nav={Blik} hasBg={false} />
-        <ServiceItem title={"credits"} logo={<Material name={'credit-card-edit-outline'} size={30} color={"#fff"} />} nav={Settings} />
+        <ServiceItem title={"credits"} logo={<Material name={'credit-card-edit-outline'} size={30} color={"#fff"} />} nav={Credits} />
         <ServiceItem title={"cantor"} logo={<MaterialIcons name={'currency-exchange'} size={30} color={"#fff"} />} nav={Settings} />
         <ServiceItem title={"graphs"} logo={<Entypo name={'bar-graph'} size={30} color={"#fff"} />} nav={Settings} />
         <ServiceItem title={"cards"} logo={<FontAwesome name={'credit-card'} size={30} color={"#fff"} />} nav={Settings} />

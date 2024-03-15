@@ -1,5 +1,7 @@
 import {Control} from 'react-hook-form';
 import PhoneTransfer from '../components/navigation/screens/Services/PhoneTransfer.tsx';
+import Credits from '../components/navigation/screens/Services/Credits.tsx';
+import AddCredits from "../components/common/AddCredit.tsx";
 
 export interface InputInterface {
   control: Control;
@@ -69,6 +71,8 @@ export type StackNavigator = {
   ContactUs: undefined;
   History: undefined;
   Blik: undefined;
+  Credits: undefined;
+  AddCredits: undefined;
   PhoneTransfer: undefined;
   UpgradeAccount: undefined;
   AccountDetails: {id: number};
@@ -136,3 +140,9 @@ export type TransferByPhone = {
   description: string;
   senderId: number;
 };
+
+export type AddLoanType = {
+  amount: number;
+  endDate: string;
+  interestRate: number;
+}
