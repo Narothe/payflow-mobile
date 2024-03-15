@@ -1,7 +1,7 @@
 import {Control} from 'react-hook-form';
 import PhoneTransfer from '../components/navigation/screens/Services/PhoneTransfer.tsx';
 import Credits from '../components/navigation/screens/Services/Credits.tsx';
-import AddCredits from "../components/common/AddCredit.tsx";
+import AddCredits from '../components/common/AddCredit.tsx';
 
 export interface InputInterface {
   control: Control;
@@ -145,4 +145,4 @@ export type AddLoanType = {
   amount: number;
   endDate: string;
   interestRate: number;
-}
+};
