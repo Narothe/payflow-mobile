@@ -27,7 +27,7 @@ export const getTransferById = async (id: number) => {
 export const sendTransferByPhone = async (transfer: TransferByPhone) => {
   try {
     return axios.post(
-      `${BASE_URL}/api/v1/transfers/phone-number`,
+      `${BASE_URL}/api/v1/transfer/phone-number`,
       transfer,
       await config(),
     );
