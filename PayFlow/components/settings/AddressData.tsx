@@ -46,7 +46,7 @@ const AddressData= ({navigation, route}: any) => {
   return(
     <View>
       <GoBack title="home address" />
-      <ScrollView className={'w-full '}>
+      <ScrollView className={'w-full h-full '}>
         <View className={'w-11/12 bg-primary mx-4 my-5 rounded py-5  '}>
           <InputData
             title={'zipcode'}

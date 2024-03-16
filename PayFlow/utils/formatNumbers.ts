@@ -62,3 +62,17 @@ export function formatBlikNumber(number: string | undefined) {
   const remainingDigits = number.substring(3);
   return `${firstDigits} ${remainingDigits}`;
 }
+
+export const formatMoney = (amount: number): string => {
+  if (!amount) return '0';
+
+  const [integerPart, decimalPart] = amount.toString().split('.');
+
+  const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  if (decimalPart && decimalPart.length === 1)
+    return `${formattedIntegerPart}.${decimalPart}0`;
+  if (decimalPart == null)
+    return `${formattedIntegerPart}`
+  return `${formattedIntegerPart}.${decimalPart}`;
+};
+

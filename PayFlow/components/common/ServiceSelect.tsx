@@ -19,7 +19,7 @@ const ServiceSelect:React.FC<Props> = ({ title, logo, nav}) => {
 
   return(
     <TouchableOpacity
-      className={'h-14 w-24 mx-3 my-2 items-center'}
+      className={'h-14 w-24 mx-1 my-2 items-center'}
       onPress={() => navigation.navigate(nav)}
     >
       <View>{logo}</View>

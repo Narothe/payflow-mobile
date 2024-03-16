@@ -11,7 +11,7 @@ const QuickSwitch = () => {
 
 
   return(
-    <View className={'bg-primary w-11/12 mx-5 h-auto rounded pb-10'}>
+    <View className={'bg-primary w-11/12 mx-3 h-auto rounded pb-10'}>
       <Text className={'text-lg font-medium text-quinary m-3 '}>Quick start</Text>
       <View className={' flex-row items-center flex-wrap '}>
         <ServiceSelect title={"profile"} logo={<Ionicons name={'user-circle'} size={30} color={"#000"} />} nav={"Settings"}/>

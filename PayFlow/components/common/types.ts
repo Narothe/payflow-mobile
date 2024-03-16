@@ -48,5 +48,5 @@ export interface AccountInterface {
   number: string;
   currency: Currency;
   balance: number;
-  type: AccountNumberType;
+  accountNumberType: AccountNumberType;
 }

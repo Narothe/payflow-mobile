@@ -14,7 +14,7 @@ const TransactionItem:React.FC<UserTransfer> = (props: UserTransfer) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return(
     <TouchableOpacity
-      className={'flex-row  h-10 border-[1px] border-quaternary rounded-full items-center mx-2 my-1 bg-primary'}
+      className={'flex-row  h-10 border-[1px] border-quaternary rounded-full items-center  my-1 bg-primary'}
       // onPress={() => navigation.navigate('Transaction',  {id: props.id})}
       onPress={() => setIsModalOpen(true)}
     >
@@ -28,7 +28,7 @@ const TransactionItem:React.FC<UserTransfer> = (props: UserTransfer) => {
           </View>
           <View className={'flex-1'}>
             <Text className={' m-0 p-0 text-[12px] text-quinary text-center'}>{props.isUserSender ? 'To:' : 'From:'}</Text>
-            <Text className={'m-0 p-0 text-base text-quinary text-center capitalize'}>{props.isUserSender ? props.receiverFullName : props.senderFullName}</Text>
+            <Text className={'m-0 p-0 text-base text-quinary text-center capitalize '}>{props.isUserSender ? props.receiverFullName : props.senderFullName}</Text>
           </View>
           <View>
             <Text className={' text-[12px] text-quinary text-center'}>Date:</Text>

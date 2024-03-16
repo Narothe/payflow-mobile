@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import GoBack from "../../../common/GoBack.tsx";
 import React, { useEffect, useState } from "react";
 import { getUserAccounts } from "../../../../api/services/Account.ts";
@@ -105,30 +105,32 @@ const History = () => {
           checked
         />
       </View>
-      <View>
-        {transfers &&
-          transfers
-            .filter((a) => {
-              return (showEUR && a.currency === Currency.EUR) ||
-                (showPLN && a.currency === Currency.PLN) ||
-                (showUSD && a.currency === Currency.USD);
-            })
-            .map((a, index) => (
-              <TransactionItem
-                key={index}
-                id={a.id}
-                date={a.date}
-                amount={a.amount}
-                currency={a.currency}
-                description={a.description}
-                senderAccountId={a.senderAccountId}
-                senderFullName={a.senderFullName}
-                receiverAccountId={a.receiverAccountId}
-                receiverFullName={a.receiverFullName}
-                isUserSender={isUserAccount(a.senderAccountId)}
-              />
-            )
-          )}
+      <View className={'items-center'}>
+        <ScrollView className={'w-11/12 h-full'}>
+          {transfers &&
+            transfers
+              .filter((a) => {
+                return (showEUR && a.currency === Currency.EUR) ||
+                  (showPLN && a.currency === Currency.PLN) ||
+                  (showUSD && a.currency === Currency.USD);
+              })
+              .map((a, index) => (
+                  <TransactionItem
+                    key={index}
+                    id={a.id}
+                    date={a.date}
+                    amount={a.amount}
+                    currency={a.currency}
+                    description={a.description}
+                    senderAccountId={a.senderAccountId}
+                    senderFullName={a.senderFullName}
+                    receiverAccountId={a.receiverAccountId}
+                    receiverFullName={a.receiverFullName}
+                    isUserSender={isUserAccount(a.senderAccountId)}
+                  />
+                )
+              )}
+        </ScrollView>
       </View>
     </View>
   )

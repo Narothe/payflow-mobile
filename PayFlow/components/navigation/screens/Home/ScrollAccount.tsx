@@ -5,10 +5,11 @@ import { getUserAccounts } from "../../../../api/services/Account.ts";
 import { AccountsList } from "../../../account/AccountList.tsx";
 import { AccountTile } from "../../../account/AccountTile.tsx";
 import ScrollDot from "../../../common/ScrollDot.tsx";
+import AccountItem from "../../../common/AccountItem.tsx";
 
 
 const { width: screenWidth } = Dimensions.get('window');
-const ELEMENT_WIDTH = 350;
+const ELEMENT_WIDTH = screenWidth * 0.8;
 
 const ScrollAccount:React.FC = () => {
   const [accounts, setAccounts] = useState([]);
@@ -44,23 +45,25 @@ const ScrollAccount:React.FC = () => {
 
   return(
     <View
-      className={'w-full mx-5 items-center '}
+      className={'w-full mx-5 items-center'}
     >
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        pagingEnabled
-        onScroll={handleScroll}
-        className={'w-11/12  max-h-28 my-5'}
-        showsHorizontalScrollIndicator={false}
-      >
-        {accounts.map((account, index) => (
-          <AccountTile
-            key={index}
-            account={account}
-          />
-        ))}
-      </ScrollView>
+     <View className={'w-11/12 my-5 items-center justify-center'}>
+       <ScrollView
+         ref={scrollViewRef}
+         horizontal
+         pagingEnabled
+         onScroll={handleScroll}
+         className={''}
+         showsHorizontalScrollIndicator={false}
+       >
+         {accounts.map((account, index) => (
+           <AccountItem
+             key={index}
+             account={account}
+           />
+         ))}
+       </ScrollView>
+     </View>
       <View className={'h-20 flex-row '}>
         {accounts.map((account, index) => (
           <ScrollDot

@@ -26,7 +26,7 @@ const UpgradeAccount = () => {
   return (
     <View>
       <GoBack title={'Upgrade Account'} />
-      <View className={'mx-3 justify-center mt-10'}>
+      <View className={'mx-3 justify-center mt-10 w-11/12'}>
         {accounts &&
           accounts
             .sort((a, b) => a.currency.localeCompare(b.currency))
