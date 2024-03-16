@@ -6,11 +6,10 @@ import Login from "../components/tosign/Login.tsx";
 import Register from "../components/tosign/Register.tsx";
 import PasswordForm from "../components/tosign/PasswordForm.tsx";
 import SignResult from "../components/tosign/SignResult.tsx";
-import App from "../App.tsx";
 import MainScreen from "../components/navigation/MainScreen.tsx";
 import Settings from "../components/settings/Settings.tsx";
 import PersonalData from "../components/settings/PersonalData.tsx";
-import React from "react";
+import React, { useEffect } from "react";
 import { StackNavigator } from "../types/types.ts";
 import ContactData from "../components/settings/ContactData.tsx";
 import AddressData from "../components/settings/AddressData.tsx";
@@ -24,11 +23,18 @@ import UpgradeAccount from "../components/navigation/screens/Services/UpgradeAcc
 import PhoneTransfer from "../components/navigation/screens/Services/PhoneTransfer.tsx";
 import Credits from "../components/navigation/screens/Services/Credits.tsx";
 import AddCredits from "../components/common/AddCredit.tsx";
+import SplashScreen from 'react-native-splash-screen'
+import { Platform } from "react-native";
 
 
 
 const Stack = createNativeStackNavigator<StackNavigator>()
 const Navigation = () => {
+
+  useEffect(() => {
+    if (Platform.OS === 'android')
+      SplashScreen.hide();
+  }, []);
 
   return(
     <NavigationContainer>
