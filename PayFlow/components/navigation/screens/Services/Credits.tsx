@@ -32,7 +32,7 @@ const Credits = () => {
     <View className={'flex-1'} >
       <GoBack title={Credits.name} />
       <View className={'items-center flex-1'}>
-        {loans.length > 0 ?
+        {loans.length > 0 &&
           <ScrollView
             className={'h-full w-11/12'}
           >
@@ -46,10 +46,6 @@ const Credits = () => {
               )}
             </View>
           </ScrollView>
-          :
-          <View className={'items-center justify-center flex-1'}>
-            <Text className={'text-2xl text-tertiary font-medium'}>Its empty :)</Text>
-          </View>
         }
       </View>
       <TouchableOpacity
