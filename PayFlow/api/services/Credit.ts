@@ -1,9 +1,9 @@
 import {config, getDataFromToken} from '../../config/authconfig.ts';
 import axios from 'axios';
 import {BASE_URL} from '../axios.ts';
-import {AddLoanType, User} from '../../types/types.ts';
+import {Loan, User} from '../../types/types.ts';
 
-export const addLoan = async (id: number, loan: AddLoanType) => {
+export const addLoan = async (id: number, loan: Loan) => {
   try {
     return axios.post(
       `${BASE_URL}/api/v1/numbers/${id}/loan`,

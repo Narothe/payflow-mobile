@@ -2,6 +2,7 @@ import {Text, View} from 'react-native';
 import React, {Dispatch, SetStateAction} from 'react';
 import {UserAccount} from '../../types/types.ts';
 import {SelectList} from 'react-native-dropdown-select-list';
+import { formatAccountNumber } from "../../utils/formatNumbers.ts";
 
 type Props = {
   setSelected: Dispatch<SetStateAction<string>>;
@@ -16,7 +17,9 @@ const SelectAccountList: React.FC<Props> = ({setSelected, accounts}) => {
       </Text>
       <SelectList
         setSelected={(val: string) => setSelected(val)}
-        data={accounts.map(a => a.currency + ' ' + a.number)}
+        data={accounts.map(
+          a => a.currency + ' ' + formatAccountNumber(a.number),
+        )}
         save="value"
         search={false}
         inputStyles={{

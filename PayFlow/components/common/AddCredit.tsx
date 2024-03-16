@@ -66,7 +66,7 @@ const AddCredits = () => {
         interestRate: interestRate,
       },
     )
-      .then(res => navigation.goBack())
+      .then(res => res && navigation.goBack())
       .catch(er => console.log(er));
   };
 

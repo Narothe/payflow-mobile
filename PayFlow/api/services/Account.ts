@@ -28,7 +28,7 @@ export const openNewAccount = async (data: NewAccountData):Promise<void> => {
     console.error("Error sending data: ", err);
   }
 }
-export const getAccountDetails = async (id:number)=> {
+export const getAccountDetails = async (id: number)=> {
   try {
     return await axios.get(`${BASE_URL}/api/v1/numbers/${id}`,await config())
   } catch (err) {
