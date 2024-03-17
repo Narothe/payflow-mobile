@@ -38,3 +38,17 @@ export const unBlockCard = async (id: number) => {
     console.error('Error unblocking card:', err);
   }
 }
+export const changeCardPin = async (id: number, pin: string) => {
+  try {
+    return axios.patch(`${BASE_URL}/api/v1/cards/${id}/change-pin`, {pin: pin}, await config());
+  } catch (err) {
+    console.error('Error changing card pin:', err);
+  }
+}
+export const removeCard = async (id: number, pin: string) => {
+  try {
+    return axios.delete(`${BASE_URL}/api/v1/cards/${id}?pin=${pin}`, await config());
+  } catch (err) {
+    console.error('Error removing card:', err);
+  }
+}
