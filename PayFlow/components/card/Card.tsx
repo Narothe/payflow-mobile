@@ -25,28 +25,26 @@ const Card:React.FC<cardProps> = ({accountId}) => {
   const [validDate, setValidDate] = useState('');
   const [cardExist, setCardExist] = useState(false)
 
-
-  useEffect((): void => {
-    (async () => {
-      try {
-          const card = await getCardByAccountNumber(accountId)
-          if(card) {
-            setCardData(card.data);
-            setCardExist(true);
-            setCurrency(card.data.currency)
-            setCardNumber(card.data.cardNumber)
-            setBalance(card.data.balance)
-            setOwner(card.data.owner)
-            setValidDate(card.data.validDate)
-          }
-      } catch (error) {
-          console.log("Error fetching card details:", error);
+  const fetchCardData = async (): Promise<void> => {
+    try {
+      const card = await getCardByAccountNumber(accountId);
+      if(card) {
+        setCardData(card.data);
+        setCardExist(true);
+        setCurrency(card.data.currency)
+        setCardNumber(card.data.cardNumber)
+        setBalance(card.data.balance)
+        setOwner(card.data.owner)
+        setValidDate(card.data.validDate)
       }
-    })();
-  }, []);
+    } catch (error) {
+      console.log("Error fetching card details:", error);
+    }
+  };
+
   useEffect(() => {
-    console.log("simea")
-  }, [cardData]);
+    fetchCardData();
+  }, [accountId]);
 
   const handleAddCard = async (): Promise<void> => {
     await createCard(accountId);
@@ -56,16 +54,18 @@ const Card:React.FC<cardProps> = ({accountId}) => {
       setCardData(card.data);
     }
   }
+  const handleChange = (): void => {
+    fetchCardData();
+  }
   const handleCardRemoval = (): void => {
     setCardExist(false);
   }
-
 
   return (
     <View className={'mb-5 w-5/6'}>
       {cardExist ? (
         <><CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={""}
-                      balance={balance} /><CardDetails cardData={cardData!}  onCardRemoval={handleCardRemoval}/></>
+                      balance={balance} /><CardDetails cardData={cardData!}  onCardRemoval={handleCardRemoval} onDetailsChange={handleChange}/></>
       ) : (
         <NewCard onPress={handleAddCard}/>
       )}

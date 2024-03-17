@@ -14,7 +14,7 @@ export const CardDetailsButton: React.FC<ActivateCardProps> = ({
 }): JSX.Element => {
   return(
     <TouchableOpacity
-      className={'w-26 h-auto m-3 items-center'}
+      className={'w-26 h-auto m-3 items-center flex-1'}
       onPress={onPress}
     >
       <View className={'rounded-full mb-1 bg-quaternary p-2'}>{logo}</View>

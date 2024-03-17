@@ -12,8 +12,9 @@ import DeleteCardModal from './DeleteCardModal.tsx';
 interface CardDetailsProps {
   cardData: CardData;
   onCardRemoval: () => void;
+  onDetailsChange: () => void;
 }
-const CardDetails: React.FC<CardDetailsProps> = ({cardData, onCardRemoval}) => {
+const CardDetails: React.FC<CardDetailsProps> = ({cardData, onCardRemoval, onDetailsChange}) => {
   const [pin, setPin] = useState('');
   const [isActive, setActive] = useState(false);
   const [isBlocked, setBlocked] = useState(false);
@@ -28,9 +29,11 @@ const CardDetails: React.FC<CardDetailsProps> = ({cardData, onCardRemoval}) => {
 
   const handleBlockCard = async (): Promise<void> => {
     await blockCard(cardData.id);
+    onDetailsChange();
   };
   const handleUnblockCard = async (): Promise<void> => {
     await unBlockCard(cardData.id);
+    onDetailsChange();
   };
 
   const handleRemoveCard = async (): Promise<void> => {
@@ -42,7 +45,7 @@ const CardDetails: React.FC<CardDetailsProps> = ({cardData, onCardRemoval}) => {
   return (
     <View className={'w-full'}>
       {isActive ? (
-        <View className={'flex-row justify-between'}>
+        <View className={'flex-row justify-evenly'}>
           {isBlocked ? (
             <CardDetailsButton
               onPress={handleUnblockCard}
