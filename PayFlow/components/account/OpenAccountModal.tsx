@@ -60,13 +60,13 @@ export const OpenAccountModal: React.FC<OpenAccountModalProps> = ({ isOpen, onCl
           <DropDown options={accountOptions} onSelect={handleAccountTypeSelect}/>
           <Text className="text-black pt-3">Choose currency:</Text>
           <DropDown options={currencyOptions} onSelect={handleCurrencySelect}/>
-          <View className={'justify-center mt-4 items-center'}>
-            <TouchableOpacity
-              onPress={() => handleOpenAccount() }
-              className={'py-3 px-6 my-2 rounded bg-quaternary  items-center'}
-            >
-              <Text className={'text-white font-medium'}>Open Account </Text>
-            </TouchableOpacity>
+          <View className={'justify-center mt-4 items-center'}><TouchableOpacity
+            onPress={() => handleOpenAccount() }
+            className={'py-3 px-6 my-2 rounded bg-quaternary  items-center'}
+          >
+            <Text className={'text-white font-medium'}>Open Account </Text>
+          </TouchableOpacity>
+
           </View>
         </View>
       </View>
