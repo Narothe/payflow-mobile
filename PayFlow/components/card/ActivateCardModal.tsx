@@ -34,7 +34,7 @@ const ActivateCardModal:  React.FC<ActivateCardModalProps> = ({ isOpen, onClose 
           <TextInput
             placeholder={'Enter pin'}
             onChangeText={setPin}
-            className={"w-full h-10 bg-gray-300 rounded-2xl px-3 my-2"}
+            className={'w-full h-10 bg-gray-300 rounded-2xl px-3 my-2'}
           />
           <View className={'items-center'}>
           <TouchableOpacity

@@ -24,3 +24,17 @@ export const activateCard = async (id: number, pin: string) => {
     console.error('Error activation card:', err);
   }
 }
+export const blockCard = async (id: number) => {
+  try {
+    return axios.patch(`${BASE_URL}/api/v1/cards/${id}/block`, await config());
+  } catch (err) {
+    console.error('Error blocking card:', err);
+  }
+}
+export const unBlockCard = async (id: number) => {
+  try {
+    return axios.patch(`${BASE_URL}/api/v1/cards/${id}/unblock`, await config());
+  } catch (err) {
+    console.error('Error unblocking card:', err);
+  }
+}
