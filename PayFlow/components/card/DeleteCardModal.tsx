@@ -5,15 +5,11 @@ import { removeCard } from "../../api/services/Card.ts";
 interface DeleteCardModalProps {
   isOpen: boolean;
   onClose: () => void;
-  cardId: number;
+  onDelete: () => void;
+  onPinChange: (value: string) => void;
 }
 
-const DeleteCardModal:  React.FC<DeleteCardModalProps> = ({ isOpen, onClose , cardId}) => {
-  const [pin, setPin] = useState('');
-  const handleChangeCardPin = async (): Promise<void> => {
-    await removeCard(cardId, pin);
-    onClose();
-  }
+const DeleteCardModal:  React.FC<DeleteCardModalProps> = ({ isOpen, onClose ,onDelete,onPinChange}) => {
 
   return (
     <Modal
@@ -30,12 +26,14 @@ const DeleteCardModal:  React.FC<DeleteCardModalProps> = ({ isOpen, onClose , ca
           </View>
           <TextInput
             placeholder={'Enter pin'}
-            onChangeText={setPin}
+            onChangeText={(value) => {
+              onPinChange(value);
+            }}
             className={'w-full h-10 bg-gray-300 rounded-2xl px-3 my-2'}
           />
           <View className={'items-center'}>
             <TouchableOpacity
-              onPress={() => handleChangeCardPin()}
+              onPress={onDelete}
               className={'w-3/5 py-3 px-6 my-2 rounded bg-quaternary  items-center'}
             >
               <Text className={'text-white font-medium'}>Delete</Text>

@@ -6,7 +6,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 export const NewCard: React.FC<{ onPress: () => void }> = ({ onPress }) => {
   return (
-    <TouchableOpacity className="w-11/12 h-auto" onPress={onPress}>
+    <TouchableOpacity className="w-full h-auto justify-center" onPress={onPress}>
       <View className="flex w-full p-4 bg-primary mt-2 rounded-2xl">
         <View className="flex-row items-center">
           <View className="flex items-center">

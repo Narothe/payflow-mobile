@@ -32,7 +32,6 @@ const Card:React.FC<cardProps> = ({accountId}) => {
           const card = await getCardByAccountNumber(accountId)
           if(card) {
             setCardData(card.data);
-            console.log(card.data)
             setCardExist(true);
             setCurrency(card.data.currency)
             setCardNumber(card.data.cardNumber)
@@ -41,21 +40,32 @@ const Card:React.FC<cardProps> = ({accountId}) => {
             setValidDate(card.data.validDate)
           }
       } catch (error) {
-        console.log("Error fetching card details:", error);
+          console.log("Error fetching card details:", error);
       }
     })();
   }, []);
+  useEffect(() => {
+    console.log("simea")
+  }, [cardData]);
 
   const handleAddCard = async (): Promise<void> => {
     await createCard(accountId);
     setCardExist(true);
+    const card = await getCardByAccountNumber(accountId);
+    if (card) {
+      setCardData(card.data);
+    }
   }
+  const handleCardRemoval = (): void => {
+    setCardExist(false);
+  }
+
 
   return (
     <View className={'mb-5 w-5/6'}>
       {cardExist ? (
         <><CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={""}
-                      balance={balance} /><CardDetails cardData={cardData!} /></>
+                      balance={balance} /><CardDetails cardData={cardData!}  onCardRemoval={handleCardRemoval}/></>
       ) : (
         <NewCard onPress={handleAddCard}/>
       )}
