@@ -1,20 +1,18 @@
-import { Button, Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Modal, Text, TextInput, TouchableOpacity, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import { DropDown } from "../common/DropDown.tsx";
 import React, { useState } from "react";
-import Input from "../common/Input.tsx";
-import { activateCard } from "../../api/services/Card.ts";
+import { activateCard, changeCardPin } from "../../api/services/Card.ts";
 
-interface ActivateCardModalProps {
+interface ChangePinModalProps {
   isOpen: boolean;
   onClose: () => void;
   cardId: number;
 }
 
-const ActivateCardModal:  React.FC<ActivateCardModalProps> = ({ isOpen, onClose , cardId}) => {
+const ChangeCardPinModal:  React.FC<ChangePinModalProps> = ({ isOpen, onClose , cardId}) => {
   const [pin, setPin] = useState('');
-  const handleActivateCard = async (): Promise<void> => {
-    await activateCard(cardId, pin);
+  const handleChangeCardPin = async (): Promise<void> => {
+    await changeCardPin(cardId, pin);
     onClose();
   }
 
@@ -33,20 +31,24 @@ const ActivateCardModal:  React.FC<ActivateCardModalProps> = ({ isOpen, onClose 
           </View>
           <TextInput
             placeholder={'Enter pin'}
+            className={"w-full h-10 bg-gray-300 rounded-2xl px-3 my-2"}
+          />
+          <TextInput
+            placeholder={'Enter new pin'}
             onChangeText={setPin}
             className={"w-full h-10 bg-gray-300 rounded-2xl px-3 my-2"}
           />
           <View className={'items-center'}>
-          <TouchableOpacity
-              onPress={() => handleActivateCard()}
-            className={'w-3/5 py-3 px-6 my-2 rounded bg-quaternary  items-center'}
-          >
-            <Text className={'text-white font-medium'}>Activate</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => handleChangeCardPin()}
+              className={'w-3/5 py-3 px-6 my-2 rounded bg-quaternary  items-center'}
+            >
+              <Text className={'text-white font-medium'}>Change pin</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
     </Modal>
   );
 }
-export default ActivateCardModal;
+export default ChangeCardPinModal;
