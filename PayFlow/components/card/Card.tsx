@@ -23,6 +23,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
   const [cardNumber, setCardNumber] = useState('');
   const [owner, setOwner] = useState('');
   const [validDate, setValidDate] = useState('');
+  const [cvv, setCvv] = useState('');
   const [cardExist, setCardExist] = useState(false)
 
   const fetchCardData = async (): Promise<void> => {
@@ -36,6 +37,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
         setBalance(card.data.balance)
         setOwner(card.data.owner)
         setValidDate(card.data.validDate)
+        setCvv(card.data.cvv)
       }
     } catch (error) {
       console.log("Error fetching card details:", error);
@@ -64,7 +66,7 @@ const Card:React.FC<cardProps> = ({accountId}) => {
   return (
     <View className={'mb-5 w-5/6'}>
       {cardExist ? (
-        <><CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={""}
+        <><CreditCard cardNumber={cardNumber} owner={owner} currency={currency} validDate={validDate} cvv={cvv}
                       balance={balance} /><CardDetails cardData={cardData!}  onCardRemoval={handleCardRemoval} onDetailsChange={handleChange}/></>
       ) : (
         <NewCard onPress={handleAddCard}/>
