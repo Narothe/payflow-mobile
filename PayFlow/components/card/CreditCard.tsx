@@ -3,7 +3,7 @@ import { Animated, Image, Text, Touchable, TouchableOpacity, View } from "react-
 import LinearGradient from 'react-native-linear-gradient';
 import chip from '../../assets/imgs/chip.png';
 import React, { useRef, useState } from "react";
-import { formatCardNumber, formatExpirationDate } from "../../utils/formatNumbers.ts";
+import { formatBalance, formatCardNumber, formatExpirationDate } from "../../utils/formatNumbers.ts";
 import LogoImg from '../../assets/logo/payflow.png';
 
 interface cardProps {
@@ -61,7 +61,7 @@ export const CreditCard: React.FC<cardProps> = ({ cardNumber, owner, currency, v
         >
           <View className={'flex-row justify-between p-1'}>
             <Text className={'text-xl text-white'}>{currency}</Text>
-            <Text className={'text-xl text-white'}>{balance.toFixed(2)}</Text>
+            <Text className={'text-xl text-white'}>{formatBalance(balance)}</Text>
           </View>
           <Image source={chip} className={'w-11 h-10'} />
           <Text className={'mt-2 text-xl font-bold text-white'}>{formatCardNumber(cardNumber)}</Text>

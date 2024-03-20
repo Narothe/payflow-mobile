@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { AccountInterface } from "../common/types.ts";
 import Entypo from 'react-native-vector-icons/Entypo';
-import { truncateNumber } from "../../utils/formatNumbers.ts";
+import { formatBalance, truncateNumber } from "../../utils/formatNumbers.ts";
 import navigation from "../../router/Navigation.tsx";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -27,7 +27,7 @@ export const AccountTile: React.FC<AccountTileProps> = ({ account}) => {
           <View className="flex-1 flex-col">
             <View className="flex-row justify-between ml-2">
               <Text className="font-bold text-lg text-quaternary">{account.currency}</Text>
-              <Text className="text-xl font-bold text-black">{account.balance.toFixed(2)}</Text>
+              <Text className="text-xl font-bold text-black">{formatBalance(account.balance)}</Text>
             </View>
             <Text className="text-sm ml-2 text-quinary">{truncateNumber(account.number)}</Text>
           </View>
