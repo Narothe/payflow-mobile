@@ -74,6 +74,7 @@ export type StackNavigator = {
   UpgradeAccount: undefined;
   AccountDetails: {id: number};
   Transaction: {id: number};
+  Transfer: undefined;
 };
 export type User = {
   userId: number;

@@ -25,6 +25,7 @@ import Credits from "../components/navigation/screens/Services/Credits.tsx";
 import AddCredits from "../components/common/AddCredit.tsx";
 import SplashScreen from 'react-native-splash-screen'
 import { Platform } from "react-native";
+import Transfer from "../components/transfer/Transfer.tsx";
 
 
 
@@ -142,6 +143,11 @@ const Navigation = () => {
         <Stack.Screen
           name="AddCredits"
           component={AddCredits}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Transfer"
+          component={Transfer}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
