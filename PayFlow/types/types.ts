@@ -147,3 +147,9 @@ export type Loan = {
   interestRate: number;
   idAccountNumber?: number;
 };
+export type NormalTransfer = {
+  senderAccountNumber: string;
+  receiverAccountNumber: string;
+  amount: string;
+  description: string;
+}

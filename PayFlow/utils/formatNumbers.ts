@@ -78,9 +78,15 @@ export const formatMoney = (amount: number): string => {
 
 export function formatBalance(balance: number): string {
   const parts = balance.toFixed(2).toString().split('.');
-  
+
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return parts.join('.');
+}
+export function extractAmount(currencyAmount: string): string {
+  const amountWithoutCurrency = currencyAmount.replace(/(PLN|USD|EUR|\s)/g, '');
+
+  const amountWithoutSeparators = amountWithoutCurrency.replace(/\s/g, '');
+  return amountWithoutSeparators;
 }
 
 
