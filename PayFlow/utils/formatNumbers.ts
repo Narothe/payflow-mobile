@@ -76,3 +76,11 @@ export const formatMoney = (amount: number): string => {
   return `${formattedIntegerPart}.${decimalPart}`;
 };
 
+export function formatBalance(balance: number): string {
+  const parts = balance.toFixed(2).toString().split('.');
+  
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join('.');
+}
+
+
