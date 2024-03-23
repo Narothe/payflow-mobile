@@ -26,6 +26,7 @@ import AddCredits from "../components/common/AddCredit.tsx";
 import SplashScreen from 'react-native-splash-screen'
 import { Platform } from "react-native";
 import Transfer from "../components/transfer/Transfer.tsx";
+import Cantor from "../components/cantor/Cantor.tsx";
 
 
 
@@ -148,6 +149,11 @@ const Navigation = () => {
         <Stack.Screen
           name="Transfer"
           component={Transfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Cantor"
+          component={Cantor}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
