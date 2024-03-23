@@ -1,4 +1,4 @@
-import { Transfer, TransferByPhone, User } from "../../types/types.ts";
+import { NormalTransfer, Transfer, TransferByPhone, User } from "../../types/types.ts";
 import {config, getDataFromToken} from '../../config/authconfig.ts';
 import axios from 'axios';
 import {BASE_URL} from '../axios.ts';
@@ -35,7 +35,7 @@ export const sendTransferByPhone = async (transfer: TransferByPhone) => {
     console.error('Error fetching accounts:', err);
   }
 };
-export const sendNormalTransfer = async (transfer: Transfer) => {
+export const sendNormalTransfer = async (transfer: NormalTransfer) => {
   try {
     return axios.post(
       `${BASE_URL}/api/v1/transfer`,

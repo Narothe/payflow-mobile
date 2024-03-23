@@ -3,13 +3,22 @@ import GoBack from "../common/GoBack.tsx";
 import SelectAccountList from "../common/SelectAccountList.tsx";
 import { useEffect, useState } from "react";
 import { getUserAccounts } from "../../api/services/Account.ts";
-import { UserAccount } from "../../types/types.ts";
+import { NormalTransfer, UserAccount } from "../../types/types.ts";
 import { TransferInput } from "../common/TransferInput.tsx";
+import { sendNormalTransfer } from "../../api/services/Transfer.ts";
+import { extractAmount } from "../../utils/formatNumbers.ts";
+import FlashMessage from 'react-native-flash-message';
+import { showMessage } from "react-native-flash-message";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { useNavigation } from "@react-navigation/native";
 
 const Transfer = () => {
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
   const [selected, setSelected] = useState('');
   const [recipientAccount, setRecipientAccount] = useState('');
+  const [amount, setAmount] = useState('');
+  const [title, setTitle] = useState('');
 
   useEffect((): void => {
     const getAccounts = async (): Promise<void> => {
@@ -25,11 +34,40 @@ const Transfer = () => {
     };
     getAccounts();
   }, []);
+  const isSuccess = () => {
+    showMessage({
+      icon: props => <MaterialCommunityIcons size={20} name={"checkbox-marked-circle-outline"} {...props} />,
+      message: 'Transfer sent successfully',
+      type: 'success',
+    });
+  }
+  const isError = () => {
+    showMessage({
+      icon: props => <MaterialIcons size={20} name={"error-outline"} {...props} />,
+      message: 'Something went wrong, please try again',
+      type: 'danger',
+    });
+  }
 
-  
+  const sendTransfer = async (): Promise<void> => {
+    const transfer: NormalTransfer = {
+      senderAccountNumber: extractAmount(selected),
+      receiverAccountNumber: recipientAccount,
+      amount: amount,
+      description: title
+    }
+    try {
+      console.log(transfer);
+      await sendNormalTransfer(transfer);
+      isSuccess();
+    } catch (error) {
+      isError();
+    }
+  }
 
   return (
     <View>
+      <FlashMessage position="top" />
       <GoBack title={'Transfer'} />
       <View className={'w-11/12 mx-3 bg-primary mt-3 p-5 rounded-xl'}>
         <SelectAccountList setSelected={setSelected} accounts={accounts} />
@@ -37,9 +75,9 @@ const Transfer = () => {
           <Text className={'font-bold text-quaternary mt-3'}>Enter recipient's account number:</Text>
           <TransferInput placeholder={'Account number'} onChange={setRecipientAccount}/>
           <Text className={'font-bold text-quaternary mt-3'}>Enter title:</Text>
-          <TransferInput placeholder={'Title'} onChange={setRecipientAccount}/>
+          <TransferInput placeholder={'Title'} onChange={setTitle}/>
           <Text className={'font-bold text-quaternary mt-3'}>Enter amount:</Text>
-          <TransferInput placeholder={'Amount'} onChange={setRecipientAccount}/>
+          <TransferInput placeholder={'Amount'} onChange={setAmount}/>
           <TouchableOpacity
             className={'mt-3 bg-quaternary py-2 px-6 rounded-xl items-center'}
             onPress={() => sendTransfer()}
