@@ -12,6 +12,8 @@ import { showMessage } from "react-native-flash-message";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from "@react-navigation/native";
+import { SuccessAlert } from "../common/SuccessAlert.tsx";
+import { DangerAlert } from "../common/DangerAlert.tsx";
 
 const Transfer = () => {
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
@@ -34,20 +36,6 @@ const Transfer = () => {
     };
     getAccounts();
   }, []);
-  const isSuccess = () => {
-    showMessage({
-      icon: props => <MaterialCommunityIcons size={20} name={"checkbox-marked-circle-outline"} {...props} />,
-      message: 'Transfer sent successfully',
-      type: 'success',
-    });
-  }
-  const isError = () => {
-    showMessage({
-      icon: props => <MaterialIcons size={20} name={"error-outline"} {...props} />,
-      message: 'Something went wrong, please try again',
-      type: 'danger',
-    });
-  }
 
   const sendTransfer = async (): Promise<void> => {
     const transfer: NormalTransfer = {
@@ -59,9 +47,9 @@ const Transfer = () => {
     try {
       console.log(transfer);
       await sendNormalTransfer(transfer);
-      isSuccess();
+      SuccessAlert({message: 'Transfer sent successfully'});
     } catch (error) {
-      isError();
+      DangerAlert({message: 'Something went wrong, please try again'})
     }
   }
 
