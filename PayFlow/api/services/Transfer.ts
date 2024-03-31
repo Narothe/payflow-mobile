@@ -1,4 +1,4 @@
-import { NormalTransfer, Transfer, TransferByPhone, User } from "../../types/types.ts";
+import { ExchangeTranser, NormalTransfer, Transfer, TransferByPhone, User } from "../../types/types.ts";
 import {config, getDataFromToken} from '../../config/authconfig.ts';
 import axios from 'axios';
 import {BASE_URL} from '../axios.ts';
@@ -44,5 +44,16 @@ export const sendNormalTransfer = async (transfer: NormalTransfer) => {
     );
   } catch (err) {
     console.error('Error sending Transfer: ',err);
+  }
+}
+export const exchangeTransfer = async (transfer: ExchangeTranser) => {
+  try {
+    return axios.post(
+      `${BASE_URL}/api/v1/transfer/exchange`,
+      transfer,
+      await config(),
+    );
+  } catch (err) {
+    console.error('Error exchanging:', err);
   }
 }

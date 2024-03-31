@@ -154,3 +154,8 @@ export type NormalTransfer = {
   amount: string;
   description: string;
 }
+export type ExchangeTranser = {
+  fromAccount: string;
+  toAccount: string;
+  amount: string;
+}
