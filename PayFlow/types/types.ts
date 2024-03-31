@@ -76,6 +76,7 @@ export type StackNavigator = {
   Transaction: {id: number};
   Transfer: undefined;
   Cantor: undefined;
+  Graphs: undefined;
 };
 export type User = {
   userId: number;

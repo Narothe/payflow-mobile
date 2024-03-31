@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 export const StandardAccount = () => {
   return (
     <View className="w-5/6 h-auto mt-5 bg-primary border-quaternary border-2 p-3">
-      <View className="flex-1 flex-row justify-between">
+      <View className="flex flex-row justify-between">
         <Text className="text-xl text-black font-bold mt-2">Standard Account</Text>
         <Image className="w-10 h-10" source={Standard}></Image>
       </View>

@@ -10,6 +10,7 @@ import { extractAmount } from "../../utils/formatNumbers.ts";
 import { exchangeTransfer, sendNormalTransfer } from "../../api/services/Transfer.ts";
 import { SuccessAlert } from "../common/SuccessAlert.tsx";
 import { DangerAlert } from "../common/DangerAlert.tsx";
+import { ExchangeRateTile, ExchangeRateTIle } from "./ExchangeRateTIle.tsx";
 
 const Cantor = () => {
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
@@ -65,6 +66,7 @@ const Cantor = () => {
           >
             <Text className={'text-primary font-bold'}>Exchange</Text>
           </TouchableOpacity>
+          <ExchangeRateTile />
         </View>
       </View>
     </View>
