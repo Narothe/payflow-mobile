@@ -75,6 +75,7 @@ const AddCredits = () => {
       <GoBack title={'Add Credit'} />
       <View className={'bg-primary m-5 p-3 rounded'}>
         <SelectAccountList
+          header={'Select account:'}
           setSelected={setAccountSelected}
           accounts={accounts}
         />

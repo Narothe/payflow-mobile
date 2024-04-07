@@ -58,7 +58,7 @@ const Transfer = () => {
       <FlashMessage position="top" />
       <GoBack title={'Transfer'} />
       <View className={'w-11/12 mx-3 bg-primary mt-3 p-5 rounded-xl'}>
-        <SelectAccountList setSelected={setSelected} accounts={accounts} />
+        <SelectAccountList header={'Select account:'} setSelected={setSelected} accounts={accounts} />
         <View className={'items-center'}>
           <Text className={'font-bold text-quaternary mt-3'}>Enter recipient's account number:</Text>
           <TransferInput placeholder={'Account number'} onChange={setRecipientAccount}/>

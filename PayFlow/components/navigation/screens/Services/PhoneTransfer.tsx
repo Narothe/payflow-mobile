@@ -72,7 +72,7 @@ const PhoneTransfer = () => {
     <View>
       <GoBack title={"Phone Transfer"} />
       <View className={'mx-3 bg-primary mt-5 p-5 rounded-xl'}>
-        <SelectAccountList setSelected={setSelected} accounts={accounts} />
+        <SelectAccountList header={'Select account:'} setSelected={setSelected} accounts={accounts} />
         <View className={'items-center'}>
           <Text className={'text-quaternary font-semibold capitalize'}>Enter recipient's phone number:</Text>
           <TextInput

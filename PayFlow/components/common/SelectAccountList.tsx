@@ -7,13 +7,14 @@ import { formatAccountNumber } from "../../utils/formatNumbers.ts";
 type Props = {
   setSelected: Dispatch<SetStateAction<string>>;
   accounts: UserAccount[];
+  header: string;
 };
-const SelectAccountList: React.FC<Props> = ({setSelected, accounts}) => {
+const SelectAccountList: React.FC<Props> = ({setSelected, accounts,header}) => {
   return (
     <View className={'my-3 mx-4 '}>
       <Text
         className={'text-quaternary font-semibold capitalize text-center mb-2'}>
-        Select Account:{' '}
+        {header}
       </Text>
       <SelectList
         setSelected={(val: string) => setSelected(val)}

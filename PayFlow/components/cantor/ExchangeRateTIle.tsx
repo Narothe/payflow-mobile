@@ -14,10 +14,10 @@ export const ExchangeRateTile = () => {
     navigation.navigate('Graphs');
   };
   return (
-    <TouchableOpacity onPress={handlePress}>
-      <View className="w-full h-auto mt-5 bg-primary border-quaternary border-2 p-2" >
+    <TouchableOpacity className={'w-full'} onPress={handlePress}>
+      <View className="h-auto mt-5 bg-primary border-quaternary border-2 p-2" >
         <View className="flex-row justify-center">
-          <Text className="text-xl text-black font-bold  ">Check the latest rates</Text>
+          <Text className="text-xl text-black font-bold ">Check the latest rates</Text>
         </View>
         <View className="flex-row mt-2 items-center">
           <MaterialCommunityIcons name={'square-medium'} size={20} color={"#000"}></MaterialCommunityIcons>

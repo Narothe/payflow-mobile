@@ -33,7 +33,9 @@ const Cantor = () => {
     getAccounts();
   }, []);
 
-  const filteredAccounts = accounts.filter(accounts => accounts.number !== extractAmount(selectedFrom));
+  const filteredAccounts = accounts.filter(
+    accounts => accounts.number !== extractAmount(selectedFrom),
+  );
 
   const sendExchange = async (): Promise<void> => {
     const transfer: ExchangeTranser = {
@@ -55,8 +57,8 @@ const Cantor = () => {
       <FlashMessage position="top" />
       <GoBack title={'Cantor'} />
       <View className={'w-11/12 mx-3 bg-primary mt-3 p-5 rounded-xl'}>
-        <SelectAccountList setSelected={setSelectedTo} accounts={accounts} />
-        <SelectAccountList setSelected={setSelectedFrom} accounts={filteredAccounts} />
+        <SelectAccountList header={'Select from account:'} setSelected={setSelectedFrom} accounts={accounts} />
+        <SelectAccountList header={'Select to account'} setSelected={setSelectedTo} accounts={filteredAccounts} />
         <View className={'items-center'}>
           <Text className={'font-bold text-quaternary mt-3'}>Enter amount:</Text>
           <TransferInput placeholder={'Amount'} onChange={setAmount}/>
