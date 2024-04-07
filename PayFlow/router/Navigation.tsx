@@ -27,6 +27,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { Platform } from "react-native";
 import Transfer from "../components/transfer/Transfer.tsx";
 import Cantor from "../components/cantor/Cantor.tsx";
+import Graphs from "../components/graph/Graphs.tsx";
 
 
 
@@ -154,6 +155,11 @@ const Navigation = () => {
         <Stack.Screen
           name="Cantor"
           component={Cantor}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Graphs"
+          component={Graphs}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
